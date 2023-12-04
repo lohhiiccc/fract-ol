@@ -45,7 +45,7 @@ $(MLXLIB):
 
 # Rule to build object files
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
-	@mkdir -p $(BUILDDIR)
+	mkdir -p $(BUILDDIR)
 	$(CC) $(CFLAGS) $(MLXINCLUDE) $(LIBFTINCLUDE) -I$(INCLUDEDIR) -MMD -c $< -o $@
 
 # Clean rule
@@ -75,6 +75,3 @@ debug-adr: $(LIBFT) $(MLXLIB) $(OBJS)
 
 # Phony targets
 .PHONY: all clean fclean re debug debug-adr
-
-# Phony targets
-.PHONY: all clean fclean re
