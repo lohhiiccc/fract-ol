@@ -7,7 +7,7 @@ SRCDIR = srcs
 BUILDDIR = build
 LIBFTDIR = libft
 MLXLIBDIR = mlxlib
-INCLUDEDIR = include
+INCLUDEDIR = includes
 
 # Source files
 SRCS = $(SRCDIR)/main.c
@@ -20,10 +20,6 @@ MLXLIB = $(MLXLIBDIR)/libmlx_Linux.a
 
 # Compilation flags for mlxlib
 MLXFLAGS = -L$(MLXLIBDIR) -lmlx_Linux -lX11 -lm -lz -lXext
-MLXINCLUDE = -I$(MLXLIBDIR)
-
-# Compilation flags for libft
-LIBFTINCLUDE = -I$(LIBFTDIR)
 
 # Target executable
 NAME = fractol
@@ -46,7 +42,7 @@ $(MLXLIB):
 # Rule to build object files
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(BUILDDIR)
-	$(CC) $(CFLAGS) $(MLXINCLUDE) $(LIBFTINCLUDE) -I$(INCLUDEDIR) -MMD -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDEDIR) -MMD -c $< -o $@
 
 # Clean rule
 clean:
@@ -67,11 +63,11 @@ re: fclean all
 
 # Debug rule for Valgrind
 debug: $(LIBFT) $(MLXLIB) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS) -g3
+	$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS) -g3
 
 # Debug rule for Valgrind with sanitize
 debug-adr: $(LIBFT) $(MLXLIB) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS) -g3 -fsanitize=address,undefined
+	$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS) -g3 -fsanitize=address,undefined
 
 # Phony targets
 .PHONY: all clean fclean re debug debug-adr
