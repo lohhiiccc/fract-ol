@@ -10,7 +10,10 @@ MLXLIBDIR = mlxlib
 INCLUDEDIR = includes
 
 # Source files
-SRCS = $(SRCDIR)/main.c
+SRCS = $(SRCDIR)/main.c \
+	   $(SRCDIR)/window.c \
+	   $(SRCDIR)/c_tools.c
+
 OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)
 
