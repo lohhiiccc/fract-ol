@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:04:41 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/05 21:28:07 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/06 14:23:24 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ t_complex	add_complex(t_complex a, t_complex b)
 double	magnitude_squared(t_complex c)
 {
 	return (c.real * c.real + c.imag * c.imag);
+}
+
+t_complex	abs_complex(t_complex c)
+{
+	t_complex	result;
+	result.real = c.real;
+	result.imag = c.imag;
+	if(c.real < 0)
+		result.real = -c.real;
+	if(c.imag < 0)
+		result.imag = -c.imag;
+	return (result);
 }
 
 t_complex	square_complex(t_complex c)
