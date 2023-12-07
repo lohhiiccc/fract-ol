@@ -6,11 +6,20 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:04:41 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/06 14:23:24 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:36:46 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "complex.h"
+
+t_complex	add_f2complex(t_complex c, double n)
+{
+	t_complex res;
+
+	res.real = c.real + n;
+	res.imag = c.imag + n;
+	return res;
+}
 
 t_complex	add_complex(t_complex a, t_complex b)
 {
@@ -50,4 +59,13 @@ t_complex	square_complex(t_complex c)
 t_complex	add_complex_squared(t_complex a, t_complex b)
 {
 	return (add_complex(square_complex(a), b));
+}
+
+t_complex multiply_complex(t_complex c, int num)
+{
+	t_complex result;
+
+	result.real = c.real * num;
+	result.imag = c.imag * num;
+	return result;
 }

@@ -6,7 +6,7 @@
 /*   By: lrio <rio@student.42lyon.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 11:26:08 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/07 12:50:16 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/07 17:52:23 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int	mouse_hook(int keycode, t_vars vars)
 	}
 	if(keycode == 4)
 		ft_putstr_fd("scroll up\n", 1);
+	if(keycode == 1)
+		ft_putstr_fd("test", 1);
 	return 0;
 }
