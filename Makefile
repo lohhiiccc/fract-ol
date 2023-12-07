@@ -12,7 +12,10 @@ INCLUDEDIR = includes
 # Source files
 SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/window.c \
-	   $(SRCDIR)/c_tools.c
+	   $(SRCDIR)/c_tools.c \
+	   $(SRCDIR)/mouse.c \
+	   $(SRCDIR)/fractal.c \
+	   $(SRCDIR)/draw.c
 
 OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)
