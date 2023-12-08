@@ -41,6 +41,14 @@ void make_image(double x, double y, double zoom, t_com_coord comp,t_vars *vars)
     vars->info.comp = comp;
 }
 
+void loop(t_vars *vars)
+{
+    mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
+    mlx_hook(vars->win, 17, 0, close_window, &vars);
+    mlx_mouse_hook(vars->win, mouse_hook, &vars);
+    mlx_loop(vars->mlx);
+}
+
 int	main(int argc, char **argv)
 {
 	if(argc == 0) return 0;
