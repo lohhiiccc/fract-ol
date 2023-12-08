@@ -30,7 +30,7 @@ t_complex	add_complex(t_complex a, t_complex b)
 	return (result);
 }
 
-double	magnitude_squared(t_complex c)
+double	squared_norm(t_complex c)
 {
 	return (c.real * c.real + c.imag * c.imag);
 }
