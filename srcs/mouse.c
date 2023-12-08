@@ -6,7 +6,7 @@
 /*   By: lrio <rio@student.42lyon.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 11:26:08 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/08 19:39:08 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/08 20:24:51 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	mouse_hook(int keycode, t_vars *vars)
     (void)vars;
     if(keycode == 5)
 	{
-        draw_fractal(vars, 100);
-		ft_putstr_fd("scroll down\n", 1);
+        ft_putstr_fd("\nscroll down\n", 1);
+        draw_fractal(vars, 100); //segmentation fault...
+		ft_putstr_fd("\nscroll down\n", 1);
+        return 0;
     }
 	if(keycode == 4)
 		ft_putstr_fd("scroll up\n", 1);

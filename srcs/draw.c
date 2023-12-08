@@ -6,14 +6,13 @@
 /*   By: lrio <rio@student.42lyon.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:47:53 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/08 19:55:55 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/08 20:21:34 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
 
-#include <stdio.h>
 void draw_fractal(t_vars *vars, int max_iterations)
 {
 	t_pixel		pixel;
