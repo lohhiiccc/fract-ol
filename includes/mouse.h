@@ -14,6 +14,6 @@
 # define FRACTOL_MOUSE_H
 # include "fractol.h"
 
-int mouse_hook(int keycode, t_vars vars);
+int mouse_hook(int keycode, t_vars *vars);
 
 #endif

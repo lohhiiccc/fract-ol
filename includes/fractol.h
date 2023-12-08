@@ -51,7 +51,7 @@ typedef struct	s_vars {
     t_info 		info;
 }				t_vars;
 
-void	draw_fractal(t_data *img, t_com_coord comp, int max_iterations,int (*f)(t_complex, int));
+void draw_fractal(t_vars *vars, int max_iterations);
 int	mandelbrot(t_complex c, int max_iterations);
 int burning_sheep(t_complex c, int max_iterations);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

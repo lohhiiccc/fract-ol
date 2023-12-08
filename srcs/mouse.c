@@ -14,14 +14,14 @@
 #include "libft.h"
 #include "fractol.h"
 
-int	mouse_hook(int keycode, t_vars vars)
+int	mouse_hook(int keycode, t_vars *vars)
 {
-	(void)vars;
-	if(keycode == 5)
+    (void)vars;
+    if(keycode == 5)
 	{
+        draw_fractal(vars, 100);
 		ft_putstr_fd("scroll down\n", 1);
-		//draw_fractal(&vars.img, (t_complex){-2.5, -1}, (t_complex){1, 1}, 1000, &mandelbrot);
-	}
+    }
 	if(keycode == 4)
 		ft_putstr_fd("scroll up\n", 1);
 	if(keycode == 1)
