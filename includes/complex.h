@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:05:23 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/07 14:47:31 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/08 11:28:02 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,4 @@ t_complex square_complex(t_complex c);
 t_complex add_complex_squared(t_complex a, t_complex b);
 t_complex add_complex(t_complex a, t_complex b);
 
-#endif //FRACTOL_COMPLEX_H
+#endif

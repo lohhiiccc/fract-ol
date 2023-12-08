@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 21:59:23 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/07 17:59:34 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/08 13:42:13 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,13 @@ typedef struct	s_data {
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
-	t_info 		info;
 }				t_data;
 
 typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-	t_data	img;
-	t_complex min;
-	t_complex max;
-	int		max_iterations;
-
+	void	    *mlx;
+	void	    *win;
+	t_data  	img;
+    t_info 		info;
 }				t_vars;
 
 void	draw_fractal(t_data *img, t_com_coord comp, int max_iterations,int (*f)(t_complex, int));

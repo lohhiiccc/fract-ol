@@ -6,7 +6,7 @@
 /*   By: lrio <rio@student.42lyon.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:42:21 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/07 13:36:03 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/08 16:14:29 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int burning_sheep(t_complex c, int max_iterations)
 	iter=0;
 	num.real = 0;
 	num.imag = 0;
-	while (iter < max_iterations && magnitude_squared(num) <= 6)
+	while (iter < max_iterations && magnitude_squared(num) <= 4)
 	{
 
 		num = add_complex_squared(abs_complex(num), c);
@@ -37,7 +37,7 @@ int	mandelbrot(t_complex c, int max_iterations)
 	iter = 0;
 	num.real = 0;
 	num.imag = 0;
-	while (iter < max_iterations && magnitude_squared(num) <= 6)
+	while (iter < max_iterations && magnitude_squared(num) <= 4)
 	{
 		num = add_complex_squared(num, c);
 		iter++;
