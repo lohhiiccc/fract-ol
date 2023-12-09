@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrio <rio@student.42lyon.fr>               +#+  +:+       +#+        */
+/*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:23:52 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/07 11:23:52 by lrio             ###   ########.fr       */
+/*   Created: 2023/12/09 10:49:41 by lrio              #+#    #+#             */
+/*   Updated: 2023/12/09 10:49:41 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_MOUSE_H
-# define FRACTOL_MOUSE_H
+
+#ifndef MOUSE_H
+# define MOUSE_H
 # include "fractol.h"
 
-int mouse_hook(int keycode, t_vars *vars);
+int	mouse_hook(int button, int x, int y, t_vars *vars);
 
 #endif

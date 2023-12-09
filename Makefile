@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O3 -flto
 
 SRCDIR = srcs
 BUILDDIR = build
@@ -52,7 +52,8 @@ fclean: clean
 	make -C $(LIBFTDIR) fclean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean
+	$(MAKE) all
 
 
 debug: $(LIBFT) $(MLXLIB) $(OBJS)

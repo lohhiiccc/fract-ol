@@ -3,15 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrio <rio@student.42lyon.fr>               +#+  +:+       +#+        */
+/*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 12:47:53 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/08 20:21:34 by lrio             ###   ########.fr       */
+/*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
+/*   Updated: 2023/12/09 18:09:56 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
+
+t_com_coord zoom(t_com_coord c, double x, double y, double *zoom, int i)
+{
+    t_com_coord r;
+
+    if (i == 1)
+    {
+        r.max.real = c.max.real / *zoom + x;
+        r.max.imag = c.max.imag / *zoom + y;
+        r.min.real = c.min.real / *zoom + x;
+        r.min.imag = c.min.imag / *zoom + y;
+    }
+    else
+    {
+        if (*zoom == 1)
+            *zoom = 2;
+        r.max.real = c.max.real * *zoom + x;
+        r.max.imag = c.max.imag * *zoom + y;
+        r.min.real = c.min.real * *zoom + x;
+        r.min.imag = c.min.imag * *zoom + y;
+    }
+    return (r);
+}
+
+void make_image(double x, double y, double zoom, t_com_coord comp,t_vars *vars)
+{
+    vars->info.x = x;
+    vars->info.y = y;
+    vars->info.zoom_factor = zoom;
+    vars->info.comp = comp;
+}
 
 void draw_fractal(t_vars *vars, int max_iterations)
 {
@@ -19,6 +50,7 @@ void draw_fractal(t_vars *vars, int max_iterations)
 	t_complex	c;
 
 	pixel.x = 0;
+    //void *img_ptr = (int *) vars->img.data->img + 1001;
 	while (pixel.x < W_W)
 	{
 		pixel.y = 0;

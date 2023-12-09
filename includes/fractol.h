@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 21:59:23 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/08 13:42:13 by lrio             ###   ########.fr       */
+/*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
+/*   Updated: 2023/12/09 17:04:11 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
@@ -51,6 +52,8 @@ typedef struct	s_vars {
     t_info 		info;
 }				t_vars;
 
+t_com_coord zoom(t_com_coord c, double x, double y, double *zoom, int i);
+void make_image(double x, double y, double zoom, t_com_coord comp,t_vars *vars);
 void draw_fractal(t_vars *vars, int max_iterations);
 int	mandelbrot(t_complex c, int max_iterations);
 int burning_sheep(t_complex c, int max_iterations);

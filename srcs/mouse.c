@@ -3,30 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrio <rio@student.42lyon.fr>               +#+  +:+       +#+        */
+/*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:26:08 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/08 20:24:51 by lrio             ###   ########.fr       */
+/*   Created: 2023/12/09 10:49:18 by lrio              #+#    #+#             */
+/*   Updated: 2023/12/09 18:07:19 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mouse.h"
 #include "libft.h"
 #include "fractol.h"
+#include "mlx.h"
+#include <stdio.h>
 
-int	mouse_hook(int keycode, t_vars *vars)
+int	mouse_hook(int button, int x, int y, t_vars *vars)
 {
-    (void)vars;
-    if(keycode == 5)
+    (void)x;
+    (void)y;
+    if(button == 4)
 	{
-        ft_putstr_fd("\nscroll down\n", 1);
-        draw_fractal(vars, 100); //segmentation fault...
-		ft_putstr_fd("\nscroll down\n", 1);
+        vars->info.zoom_factor += 0.2;
+        printf("%f\n", vars->info.zoom_factor);
+        //make_image(vars->info.x, vars->info.y,vars->info.zoom_factor,vars->info.comp,vars);
+        mlx_clear_window(vars->mlx,vars->win);
+        make_image(vars->info.x, vars->info.y, vars->info.zoom_factor,
+                   zoom(vars->info.comp, vars->info.x, vars->info.y, &vars->info.zoom_factor, 1), vars);
+        draw_fractal(vars, 100);
+        mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
         return 0;
     }
-	if(keycode == 4)
-		ft_putstr_fd("scroll up\n", 1);
-	if(keycode == 1)
-		ft_putstr_fd("test", 1);
+	if(button == 5)
+    {
+        vars->info.zoom_factor -= 0.2;
+        if (vars->info.zoom_factor < 1)
+            return (vars->info.zoom_factor += 0.2, 0);
+        printf("%f\n", vars->info.zoom_factor);
+        mlx_clear_window(vars->mlx, vars->win);
+        make_image(vars->info.x, vars->info.y, vars->info.zoom_factor,
+                   zoom(vars->info.comp, vars->info.x, vars->info.y, &vars->info.zoom_factor, 0), vars);
+        draw_fractal(vars, 100);
+        mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
+        return 0;
+    }
+    if(button == 1)
+	    vars->info.x += 0.5;
 	return 0;
 }
