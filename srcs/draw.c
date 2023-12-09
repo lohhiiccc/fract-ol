@@ -6,37 +6,12 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 23:11:32 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/09 23:14:54 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
-
-t_com_coord zoom(t_com_coord c, double *zoom, int param, t_info in)
-{
-    t_com_coord r;
-    r = c;
-    (void)zoom;
-    (void )param;
-    (void )in;
-    /*
-    if (param == 1)
-    {
-        r.max.real = (c.max.real) / ((*zoom)) - in.x;
-        r.max.imag = (c.max.imag) / ((*zoom)) - in.y;
-        r.min.real = (c.min.real) / ((*zoom)) - in.x;
-        r.min.imag = (c.min.imag) / ((*zoom)) - in.y;
-    }
-    else
-    {
-        r.max.real = (c.max.real) * ((*zoom)) - in.x;
-        r.max.imag = (c.max.imag) * ((*zoom)) - in.y;
-        r.min.real = (c.min.real) * ((*zoom)) - in.x;
-        r.min.imag = (c.min.imag) * ((*zoom)) - in.y;
-    }*/
-    return (r);
-}
 
 void make_image(double x, double y, double zoom, t_com_coord comp,t_vars *vars)
 {
