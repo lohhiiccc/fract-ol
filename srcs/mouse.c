@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:18 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 22:22:23 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/09 23:00:00 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	mouse_hook(int button, int x, int y, t_vars *vars)
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
         return 0;
     }
+    printf("%f\n", vars->info.zoom_factor);
 	return 0;
 }
