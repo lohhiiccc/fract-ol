@@ -6,10 +6,9 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 20:01:14 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/09 21:30:49 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <X11/X.h>
 #include "mlx.h"
@@ -17,10 +16,12 @@
 #include "fractol.h"
 #include "complex.h"
 #include "mouse.h"
+#include <stdio.h>
 
-int	close_window(void)
+int	close_window(t_vars *vars)
 {
-	exit(0);
+    mlx_destroy_window(vars->mlx, vars->win);
+    exit(0);
 }
 
 int keyboard(int key, t_vars *vars)
@@ -28,7 +29,7 @@ int keyboard(int key, t_vars *vars)
     (void)vars;
     if (key == 65362)
     {
-        vars->info.comp.max.imag = (vars->info.comp.max.imag - 0.3 / ( 2*vars->info.zoom_factor)/*vars->info.y*/);
+        vars->info.comp.max.imag = (vars->info.comp.max.imag - 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
         vars->info.comp.min.imag = (vars->info.comp.min.imag - 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
@@ -54,7 +55,13 @@ int keyboard(int key, t_vars *vars)
         vars->info.comp.min.imag = (vars->info.comp.min.imag + 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
-    }ft_putnbr_fd(key, 1);
+    }
+    if(key == 65451) // +
+    {
+        draw_fractal(vars, 1000);
+        mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
+    }
+    ft_putnbr_fd(key, 1);
     return 0;
 }
 
@@ -80,13 +87,12 @@ int	main(int argc, char **argv)
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, \
 	&vars.img.line_length, &vars.img.endian);
     vars.info.comp = (t_com_coord){(t_complex){-2.5, -1.5}, (t_complex){2.5, 1.5}};
-    vars.info.fractal_func = &burning_sheep;
+    vars.info.fractal_func = &mandelbrot;
     make_image(0,0,1,vars.info.comp, &vars);
-
     draw_fractal(&vars, 100);
     ft_putnbr_fd(vars.info.zoom_factor, 1);
 	ft_putstr_fd("ok", 1);
 
     loop(&vars);
-return (0);
+    return (0);
 }
