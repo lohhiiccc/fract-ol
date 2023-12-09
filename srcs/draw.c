@@ -6,32 +6,32 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 19:28:40 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/09 22:34:51 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
 
-t_com_coord zoom(t_com_coord c, double *zoom, int i)
+t_com_coord zoom(t_com_coord c, double *zoom, int param, t_info in)
 {
     t_com_coord r;
 
-    if (i == 1)
+    if (param == 1)
     {
-        r.max.real = (c.max.real) / *zoom;
-        r.max.imag = (c.max.imag) / *zoom;
-        r.min.real = (c.min.real) / *zoom;
-        r.min.imag = (c.min.imag) / *zoom;
+        r.max.real = ((c.max.real) - in.x) / *zoom;
+        r.max.imag = ((c.max.imag) - in.y) / *zoom;
+        r.min.real = ((c.min.real) - in.x) / *zoom;
+        r.min.imag = ((c.min.imag) - in.y) / *zoom;
     }
     else
     {
         if (*zoom == 1)
             *zoom = 2;
-        r.max.real = (c.max.real) * *zoom;
-        r.max.imag = (c.max.imag) * *zoom;
-        r.min.real = (c.min.real) * *zoom;
-        r.min.imag = (c.min.imag) * *zoom;
+        r.max.real = ((c.max.real) - in.x) * *zoom;
+        r.max.imag = ((c.max.imag) - in.y) * *zoom;
+        r.min.real = ((c.min.real) - in.x) * *zoom;
+        r.min.imag = ((c.min.imag) - in.y) * *zoom;
     }
     return (r);
 }
@@ -49,14 +49,14 @@ void draw_fractal(t_vars *vars, int max_iterations)
 	t_pixel		pixel;
 	t_complex	c;
 
-	pixel.x = 0;
+    pixel.x = 0;
     //void *img_ptr = (int *) vars->img.data->img + 1001;
 	while (pixel.x < W_W)
 	{
 		pixel.y = 0;
 		while (pixel.y < W_H)
 		{
-			c.real = vars->info.comp.min.real + (vars->info.comp.max.real - vars->info.comp.min.real) * pixel.x / W_W;
+            c.real = vars->info.comp.min.real + (vars->info.comp.max.real - vars->info.comp.min.real) * pixel.x / W_W;
 			c.imag = vars->info.comp.min.imag + (vars->info.comp.max.imag - vars->info.comp.min.imag) * pixel.y / W_H;
 			pixel.iterations = vars->info.fractal_func(c, max_iterations);
 			pixel.r = (int)(sin(0.05 * pixel.iterations) * 127);

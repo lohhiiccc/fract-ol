@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 21:30:49 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/09 22:29:59 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int keyboard(int key, t_vars *vars)
         vars->info.comp.min.imag = (vars->info.comp.min.imag - 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
+        vars->info.y += 0.3 / (2 * vars->info.zoom_factor);
     }
     if(key == 65361)
     {
@@ -40,6 +41,7 @@ int keyboard(int key, t_vars *vars)
         vars->info.comp.min.real = (vars->info.comp.min.real - 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
+        vars->info.x += 0.3 / (2 * vars->info.zoom_factor);
     }
     if(key == 65363)
     {
@@ -47,6 +49,7 @@ int keyboard(int key, t_vars *vars)
         vars->info.comp.min.real = (vars->info.comp.min.real + 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
+        vars->info.x += 0.3 / (2 * vars->info.zoom_factor);
     }
     if (key == 65364)
     {
@@ -55,6 +58,7 @@ int keyboard(int key, t_vars *vars)
         vars->info.comp.min.imag = (vars->info.comp.min.imag + 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
+        vars->info.y += 0.3 / (2* vars->info.zoom_factor);
     }
     if(key == 65451) // +
     {
