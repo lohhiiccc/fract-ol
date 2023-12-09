@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:18 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 18:07:19 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/09 19:30:16 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	mouse_hook(int button, int x, int y, t_vars *vars)
         //make_image(vars->info.x, vars->info.y,vars->info.zoom_factor,vars->info.comp,vars);
         mlx_clear_window(vars->mlx,vars->win);
         make_image(vars->info.x, vars->info.y, vars->info.zoom_factor,
-                   zoom(vars->info.comp, vars->info.x, vars->info.y, &vars->info.zoom_factor, 1), vars);
+                   zoom(vars->info.comp, &vars->info.zoom_factor, 1), vars);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
         return 0;
@@ -40,7 +40,7 @@ int	mouse_hook(int button, int x, int y, t_vars *vars)
         printf("%f\n", vars->info.zoom_factor);
         mlx_clear_window(vars->mlx, vars->win);
         make_image(vars->info.x, vars->info.y, vars->info.zoom_factor,
-                   zoom(vars->info.comp, vars->info.x, vars->info.y, &vars->info.zoom_factor, 0), vars);
+                   zoom(vars->info.comp, &vars->info.zoom_factor, 0), vars);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
         return 0;

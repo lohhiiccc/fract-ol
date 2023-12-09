@@ -52,7 +52,7 @@ typedef struct	s_vars {
     t_info 		info;
 }				t_vars;
 
-t_com_coord zoom(t_com_coord c, double x, double y, double *zoom, int i);
+t_com_coord zoom(t_com_coord c, double *zoom, int i);
 void make_image(double x, double y, double zoom, t_com_coord comp,t_vars *vars);
 void draw_fractal(t_vars *vars, int max_iterations);
 int	mandelbrot(t_complex c, int max_iterations);

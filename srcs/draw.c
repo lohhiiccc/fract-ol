@@ -6,32 +6,32 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 18:09:56 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/09 19:28:40 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
 
-t_com_coord zoom(t_com_coord c, double x, double y, double *zoom, int i)
+t_com_coord zoom(t_com_coord c, double *zoom, int i)
 {
     t_com_coord r;
 
     if (i == 1)
     {
-        r.max.real = c.max.real / *zoom + x;
-        r.max.imag = c.max.imag / *zoom + y;
-        r.min.real = c.min.real / *zoom + x;
-        r.min.imag = c.min.imag / *zoom + y;
+        r.max.real = (c.max.real) / *zoom;
+        r.max.imag = (c.max.imag) / *zoom;
+        r.min.real = (c.min.real) / *zoom;
+        r.min.imag = (c.min.imag) / *zoom;
     }
     else
     {
         if (*zoom == 1)
             *zoom = 2;
-        r.max.real = c.max.real * *zoom + x;
-        r.max.imag = c.max.imag * *zoom + y;
-        r.min.real = c.min.real * *zoom + x;
-        r.min.imag = c.min.imag * *zoom + y;
+        r.max.real = (c.max.real) * *zoom;
+        r.max.imag = (c.max.imag) * *zoom;
+        r.min.real = (c.min.real) * *zoom;
+        r.min.imag = (c.min.imag) * *zoom;
     }
     return (r);
 }

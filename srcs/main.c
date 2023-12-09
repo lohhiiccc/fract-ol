@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 16:55:33 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/09 20:01:14 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,47 @@ int	close_window(void)
 	exit(0);
 }
 
+int keyboard(int key, t_vars *vars)
+{
+    (void)vars;
+    if (key == 65362)
+    {
+        vars->info.comp.max.imag = (vars->info.comp.max.imag - 0.3 / ( 2*vars->info.zoom_factor)/*vars->info.y*/);
+        vars->info.comp.min.imag = (vars->info.comp.min.imag - 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
+        draw_fractal(vars, 100);
+        mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
+    }
+    if(key == 65361)
+    {
+        vars->info.comp.max.real = (vars->info.comp.max.real - 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
+        vars->info.comp.min.real = (vars->info.comp.min.real - 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
+        draw_fractal(vars, 100);
+        mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
+    }
+    if(key == 65363)
+    {
+        vars->info.comp.max.real = (vars->info.comp.max.real + 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
+        vars->info.comp.min.real = (vars->info.comp.min.real + 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
+        draw_fractal(vars, 100);
+        mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
+    }
+    if (key == 65364)
+    {
+
+        vars->info.comp.max.imag = (vars->info.comp.max.imag + 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
+        vars->info.comp.min.imag = (vars->info.comp.min.imag + 0.3 / (2*vars->info.zoom_factor)/*vars->info.y*/);
+        draw_fractal(vars, 100);
+        mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
+    }ft_putnbr_fd(key, 1);
+    return 0;
+}
+
 void loop(t_vars *vars)
 {
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
         mlx_hook(vars->win, 17, 0, close_window, &vars);
         mlx_mouse_hook(vars->win, mouse_hook, vars);
+        mlx_key_hook(vars->win, keyboard,vars);
         ft_putnbr_fd(vars->info.zoom_factor, 1);
         mlx_loop(vars->mlx);
 }
@@ -44,7 +80,7 @@ int	main(int argc, char **argv)
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, \
 	&vars.img.line_length, &vars.img.endian);
     vars.info.comp = (t_com_coord){(t_complex){-2.5, -1.5}, (t_complex){2.5, 1.5}};
-    vars.info.fractal_func = &mandelbrot;
+    vars.info.fractal_func = &burning_sheep;
     make_image(0,0,1,vars.info.comp, &vars);
 
     draw_fractal(&vars, 100);
