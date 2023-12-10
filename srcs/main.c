@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 23:00:53 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/10 02:30:03 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	main(int argc, char **argv)
     vars.info.comp = (t_com_coord){(t_complex){-2.5, -1.5}, (t_complex){2.5, 1.5}};
     vars.info.x = 0;
     vars.info.y = 0;
+    vars.info.zoom_factor = 0.5;
     vars.info.fractal_func = &mandelbrot;
     make_image(0,0,1,vars.info.comp, &vars);
     draw_fractal(&vars, 100);
