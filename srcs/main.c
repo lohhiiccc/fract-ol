@@ -29,33 +29,36 @@ int keyboard(int key, t_vars *vars)
     (void)vars;
     if (key == 65362)
     {
-        vars->info.comp.max.imag = (vars->info.comp.max.imag - 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
-        vars->info.comp.min.imag = (vars->info.comp.min.imag - 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
+        vars->info.y -= 0.8 / vars->info.zoom_factor;
+        //vars->info.comp.max.imag = (vars->info.comp.max.imag - 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
+        //vars->info.comp.min.imag = (vars->info.comp.min.imag - 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
         vars->info.y += 0.3 / (2 * vars->info.zoom_factor);
     }
     if(key == 65361)
     {
-        vars->info.comp.max.real = (vars->info.comp.max.real - 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
-        vars->info.comp.min.real = (vars->info.comp.min.real - 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
+        vars->info.x -= 0.8 / (vars->info.zoom_factor);
+       // vars->info.comp.max.real = (vars->info.comp.max.real - 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
+        //vars->info.comp.min.real = (vars->info.comp.min.real - 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
         vars->info.x += 0.3 / (2 * vars->info.zoom_factor);
     }
     if(key == 65363)
     {
-        vars->info.comp.max.real = (vars->info.comp.max.real + 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
-        vars->info.comp.min.real = (vars->info.comp.min.real + 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
+        vars->info.x += 0.8 / vars->info.zoom_factor;
+        //vars->info.comp.max.real = (vars->info.comp.max.real + 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
+        //vars->info.comp.min.real = (vars->info.comp.min.real + 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
         vars->info.x += 0.3 / (vars->info.zoom_factor);
     }
     if (key == 65364)
     {
-
-        vars->info.comp.max.imag = (vars->info.comp.max.imag + 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
-        vars->info.comp.min.imag = (vars->info.comp.min.imag + 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
+        vars->info.y += 0.8 / vars->info.zoom_factor;
+        //vars->info.comp.max.imag = (vars->info.comp.max.imag + 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
+        //vars->info.comp.min.imag = (vars->info.comp.min.imag + 0.8 / (vars->info.zoom_factor)/*vars->info.y*/);
         draw_fractal(vars, 100);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
         vars->info.y += 0.3 / (vars->info.zoom_factor);
@@ -91,6 +94,8 @@ int	main(int argc, char **argv)
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, \
 	&vars.img.line_length, &vars.img.endian);
     vars.info.comp = (t_com_coord){(t_complex){-2.5, -1.5}, (t_complex){2.5, 1.5}};
+    vars.info.x = 0;
+    vars.info.y = 0;
     vars.info.fractal_func = &mandelbrot;
     make_image(0,0,1,vars.info.comp, &vars);
     draw_fractal(&vars, 100);

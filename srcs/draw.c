@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 23:14:54 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/10 01:32:44 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void draw_fractal(t_vars *vars, int max_iterations)
     pixel.x = 0;
     //void *img_ptr = (int *) vars->img.data->img + 1001;
 
-    info.comp.max.imag = (vars->info.comp.max.imag / vars->info.zoom_factor);
-    info.comp.max.real = (vars->info.comp.max.real / vars->info.zoom_factor);
-    info.comp.min.imag = (vars->info.comp.min.imag / vars->info.zoom_factor);
-	info.comp.min.real = (vars->info.comp.min.real / vars->info.zoom_factor);
+    info.comp.max.imag = vars->info.y + (vars->info.comp.max.imag / vars->info.zoom_factor);
+    info.comp.max.real = vars->info.x + (vars->info.comp.max.real / vars->info.zoom_factor);
+    info.comp.min.imag = vars->info.y + (vars->info.comp.min.imag / vars->info.zoom_factor);
+	info.comp.min.real = vars->info.x + (vars->info.comp.min.real / vars->info.zoom_factor);
     while (pixel.x < W_W)
 	{
 		pixel.y = 0;
