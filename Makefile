@@ -11,8 +11,10 @@ SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/window.c \
 	   $(SRCDIR)/c_tools.c \
 	   $(SRCDIR)/mouse.c \
+	   $(SRCDIR)/arrow.c \
 	   $(SRCDIR)/fractal.c \
-	   $(SRCDIR)/draw.c
+	   $(SRCDIR)/draw.c \
+	   $(SRCDIR)/keyboard.c
 
 OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)
@@ -49,17 +51,10 @@ clean:
 	rm -rf $(BUILDDIR)
 
 fclean: clean
-	make -C $(LIBFTDIR) fclean
 	rm -f $(NAME)
 
 re: fclean
 	$(MAKE) all
 
 
-debug: $(LIBFT) $(MLXLIB) $(OBJS)
-	$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS) -g3
-
-debug-adr: $(LIBFT) $(MLXLIB) $(OBJS)
-	$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS) -g3 -fsanitize=address,undefined
-
-.PHONY: all clean fclean re debug debug-adr
+.PHONY: all clean fclean re

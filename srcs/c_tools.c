@@ -6,10 +6,9 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:38 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 11:25:44 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/10 14:23:15 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "complex.h"
 
@@ -30,11 +29,12 @@ double	squared_norm(t_complex c)
 t_complex	abs_complex(t_complex c)
 {
 	t_complex	result;
+
 	result.real = c.real;
 	result.imag = c.imag;
-	if(c.real < 0)
+	if (c.real < 0)
 		result.real = -c.real;
-	if(c.imag < 0)
+	if (c.imag < 0)
 		result.imag = -c.imag;
 	return (result);
 }

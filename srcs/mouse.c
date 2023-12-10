@@ -6,40 +6,30 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:18 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/10 02:22:25 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/10 13:37:04 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mouse.h"
-#include "libft.h"
-#include "fractol.h"
+#include "keyboard.h"
 #include "mlx.h"
-#include <math.h>
-#include <stdio.h>
 
 int	mouse_hook(int button, int x, int y, t_vars *vars)
 {
     (void)x;
     (void)y;
-    if(button == 4)
+    if(button == MOUSE_S_UP)
 	{
         vars->info.zoom_factor *= 2;
         mlx_clear_window(vars->mlx,vars->win);
-        draw_fractal(vars, 100);
+        draw_fractal(vars);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
-        printf("%f\n", vars->info.zoom_factor);
-        return 0;
     }
-	if(button == 5)
+	if(button == MOUSE_S_DOWN)
     {
         vars->info.zoom_factor /= 2;
-       // if (vars->info.zoom_factor < 1)
-         //   return (vars->info.zoom_factor = 1.1, 0);
         mlx_clear_window(vars->mlx, vars->win);
-        draw_fractal(vars, 100);
+        draw_fractal(vars);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-        printf("%f\n", vars->info.zoom_factor);
-        return 0;
     }
 	return 0;
 }

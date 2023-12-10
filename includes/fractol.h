@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/09 22:04:02 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/10 14:43:55 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ typedef struct	s_info {
 	int			(*fractal_func)(t_complex, int);
 	double		x;
 	double 		y;
-	t_com_coord comp;
 	double		zoom_factor;
+    int         max_iter;
+    t_com_coord comp;
 }				t_info;
 
 typedef struct	s_data {
@@ -53,9 +54,9 @@ typedef struct	s_vars {
 }				t_vars;
 
 t_com_coord zoom(t_com_coord c, double *zoom, int param, t_info in);
-void make_image(double x, double y, double zoom, t_com_coord comp,t_vars *vars);
-void draw_fractal(t_vars *vars, int max_iterations);
+void make_img(double x, double y, double zoom, t_com_coord comp, t_vars *vars);
+void draw_fractal(t_vars *vars);
 int	mandelbrot(t_complex c, int max_iterations);
-int burning_sheep(t_complex c, int max_iterations);
+int burning_ship(t_complex c, int max_iterations);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 #endif
