@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -O3 -flto
+CFLAGS = -Wall -Wextra -Werror -Ofast -march=native -flto -fno-signed-zeros -funroll-loops
 
 SRCDIR = srcs
 BUILDDIR = build
@@ -14,7 +14,7 @@ SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/arrow.c \
 	   $(SRCDIR)/fractal.c \
 	   $(SRCDIR)/draw.c \
-	   $(SRCDIR)/keyboard.c
+	   $(SRCDIR)/keyboard.c \
 
 OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)
@@ -40,7 +40,7 @@ $(MLXLIB):
 	make -C $(MLXLIBDIR)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
-	mkdir -p $(BUILDDIR)
+	@mkdir -p $(BUILDDIR)
 	$(CC) $(CFLAGS) -I$(INCLUDEDIR) -MMD -MP -c $< -o $@
 
 -include $(DEPS)
