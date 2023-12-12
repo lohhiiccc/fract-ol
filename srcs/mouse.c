@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:18 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/10 22:43:14 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/12 00:41:54 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	mouse_hook(int button, int x, int y, t_vars *vars)
 	{
         vars->info.zoom_factor *= 1.5;
         mlx_clear_window(vars->mlx,vars->win);
-        draw_fractal(vars);
+		draw_fractal(vars);
         mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img,0,0);
     }
 	if(button == MOUSE_S_DOWN)
