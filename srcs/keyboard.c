@@ -6,10 +6,12 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:29:33 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/10 15:13:45 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/11 13:49:51 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "fractol.h"
 #include "keyboard.h"
 #include "mlx.h"
@@ -38,5 +40,11 @@ int	keyboard(int key, t_vars *vars)
 		draw_fractal(vars);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 	}
+	if(key == 65307)
+	{
+		exit(0);
+	}
+	else
+		printf("touche: %d\n", key);
 	return (0);
 }

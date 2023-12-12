@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/10 14:51:43 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/12 01:12:09 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,10 @@ int	main(int argc, char **argv)
     vars.info.x = 0;
     vars.info.y = 0;
     vars.info.max_iter = 100;
-    vars.info.zoom_factor = 0.5;
-    vars.info.fractal_func = &burning_ship;
+	vars.info.zoom_factor = 0.5;
+    vars.info.fractal_func = &mandelbrot;
 
-	vars.info.x = 0;
-	vars.info.y = 0;
-	vars.info.zoom_factor = 1;
-    draw_fractal(&vars);
+	fast_draw(&vars);
     ft_putnbr_fd(vars.info.zoom_factor, 1);
 	ft_putstr_fd("ok", 1);
 
