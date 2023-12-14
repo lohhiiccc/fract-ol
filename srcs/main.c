@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/13 18:16:02 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/14 13:00:41 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 
 int	close_window(t_vars *vars)
 {
-	return(mlx_loop_end(vars->mlx));
+	return (mlx_loop_end(vars->mlx));
 }
 
 void	loop(t_vars *vars)
 {
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);
-	mlx_hook(vars->win, 17, 0, close_window, vars);
+	mlx_hook(vars->win, 17, 0, close_window, &vars);
 	mlx_mouse_hook(vars->win, mouse_hook, vars);
 	mlx_key_hook(vars->win, keyboard, vars);
 	ft_putnbr_fd(vars->info.zoom_factor, 1);
