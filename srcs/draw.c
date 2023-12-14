@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/14 13:00:16 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/14 15:18:16 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static int	make_pixel(t_vars *vars, t_complex c, t_pixel pixel)
 	pixel.iterations = vars->info.fractal_func(c, vars->info.max_iter);
 	if (pixel.iterations > vars->info.max_iter -1)
 		return (0);
-	pixel.r = (int)(sin(0.06 * (pixel.iterations)) * 10);
-	pixel.g = (int)(sin(0.01 * (pixel.iterations)) * 225);
-	pixel.b = (int)(sin(0.1 * (pixel.iterations)) * 200);
+	pixel.r = (int)(sin(0.016 * (pixel.iterations) + 4) * 230 + 25);
+	pixel.g = (int)(sin(0.013 * (pixel.iterations) + 2) * 230 + 25);
+	pixel.b = (int)(sin(0.01 * (pixel.iterations) + 1) * 230 + 25);
 	return ((pixel.r << 16) | (pixel.g << 8) | pixel.b);
 }
 
