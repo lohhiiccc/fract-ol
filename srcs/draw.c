@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/14 12:48:32 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/14 13:00:16 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ static int	make_pixel(t_vars *vars, t_complex c, t_pixel pixel)
 	return ((pixel.r << 16) | (pixel.g << 8) | pixel.b);
 }
 
-
-t_complex getcomplex(t_pixel pixel, t_info info)
+t_complex	getcomplex(t_pixel pixel, t_info info)
 {
-	t_complex c;
+	t_complex	c;
 
 	c.real = info.comp.min.real + \
 				(info.comp.max.real - info.comp.min.real) * pixel.x / W_W;
@@ -51,7 +50,7 @@ t_complex getcomplex(t_pixel pixel, t_info info)
 void	fast_draw(t_vars *vars)
 {
 	t_pixel		pixel;
-	void *img_ptr;
+	void		*img_ptr;
 
 	img_ptr = vars->data.addr;
 	pixel.y = 0;
@@ -61,7 +60,8 @@ void	fast_draw(t_vars *vars)
 		while (pixel.x < W_W)
 		{
 			if (!(pixel.x % 2 == 1 || pixel.y % 2 == 1))
-				*(uint32_t *)img_ptr = make_pixel(vars, getcomplex(pixel, calc_coord(vars->info)), pixel);
+				*(uint32_t *)img_ptr = make_pixel(vars, \
+				getcomplex(pixel, calc_coord(vars->info)), pixel);
 			else
 				*(uint32_t *)img_ptr = 1;
 			img_ptr = (uint8_t *)img_ptr + (vars->data.bits_per_pixel / 8);
@@ -76,7 +76,7 @@ void	fast_draw(t_vars *vars)
 void	draw_fractal(t_vars *vars)
 {
 	t_pixel		pixel;
-	void *img_ptr;
+	void		*img_ptr;
 
 	pixel.y = 0;
 	img_ptr = vars->data.addr;
@@ -85,7 +85,8 @@ void	draw_fractal(t_vars *vars)
 		pixel.x = 0;
 		while (pixel.x < W_W)
 		{
-			*(uint32_t *)img_ptr = make_pixel(vars, getcomplex(pixel, calc_coord(vars->info)), pixel);
+			*(uint32_t *)img_ptr = make_pixel \
+			(vars, getcomplex(pixel, calc_coord(vars->info)), pixel);
 			img_ptr = (uint8_t *)img_ptr + (vars->data.bits_per_pixel / 8);
 			pixel.x++;
 		}
