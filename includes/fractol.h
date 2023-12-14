@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/14 12:56:34 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/14 14:04:39 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct	s_vars {
     t_info 		info;
 }				t_vars;
 
+int	julia(t_complex c, int max_iterations);
 void	even_pixel(uint32_t *img_ptr);
 void	odd_pixel(uint32_t *img_ptr);
 void	fast_draw(t_vars *vars);

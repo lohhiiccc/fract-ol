@@ -6,14 +6,12 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/14 13:00:41 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/14 15:11:30 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "libft.h"
-#include "fractol.h"
-#include "complex.h"
 #include "mouse.h"
 #include "keyboard.h"
 
@@ -43,12 +41,12 @@ int	main(int argc, char **argv)
 	vars.data.img = mlx_new_image(vars.mlx, W_W, W_H);
 	vars.data.addr = mlx_get_data_addr(vars.data.img, &vars.data.bits_per_pixel, \
 	&vars.data.line_length, &vars.data.endian);
-    vars.info.comp = (t_com_coord){(t_complex){-2.5, -1.5}, (t_complex){2.5, 1.5}};
+	vars.info.comp = (t_com_coord){(t_complex){-2.5, -1.5}, (t_complex){2.5, 1.5}};
     vars.info.x = 0;
     vars.info.y = 0;
     vars.info.max_iter = 100;
 	vars.info.zoom_factor = 0.5;
-    vars.info.fractal_func = &burning_ship;
+    vars.info.fractal_func = &mandelbrot;
 
 	fast_draw(&vars);
     ft_putnbr_fd(vars.info.zoom_factor, 1);
