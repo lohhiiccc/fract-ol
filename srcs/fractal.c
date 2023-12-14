@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:30 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/10 14:31:31 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/13 18:25:32 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	burning_ship(t_complex c, int max_iterations)
 		num = add_complex_squared(abs_complex(num), c);
 		iter++;
 	}
-	return (iter - 1);
+	return (iter);
 }
 
 int	mandelbrot(t_complex c, int max_iterations)
@@ -41,5 +41,5 @@ int	mandelbrot(t_complex c, int max_iterations)
 		num = add_complex_squared(num, c);
 		iter++;
 	}
-	return (iter - 1);
+	return (iter);
 }
