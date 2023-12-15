@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/15 15:30:36 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/15 18:03:01 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	close_window(t_vars *vars)
 	return (mlx_loop_end(vars->mlx));
 }
 
-int re(t_vars *vars)
+int render_img(t_vars *vars)
 {
 	if(vars->info.needredraw == 1)
 	{
@@ -42,7 +42,7 @@ void	loop(t_vars *vars)
 	mlx_key_hook(vars->win, keyboard, vars);
 	mlx_hook(vars->win, 17, 0, close_window, &vars);
 	ft_putnbr_fd(vars->info.zoom_factor, 1);
-	mlx_loop_hook(vars->mlx, re, vars);
+	mlx_loop_hook(vars->mlx, render_img, vars);
 	mlx_loop(vars->mlx);
 }
 
@@ -56,11 +56,12 @@ int	main(int argc, char **argv)
 	vars.win = mlx_new_window(vars.mlx, W_W, W_H, "fractal");
 	vars.data.img = mlx_new_image(vars.mlx, W_W, W_H);
 	vars.data.addr = mlx_get_data_addr(vars.data.img, &vars.data.bits_per_pixel, &vars.data.line_length, &vars.data.endian);
-	vars.info = (t_info){&julia, 0, 0, 0, 1, 100, (t_com_coord){(t_complex){-2.5, -1.5}, (t_complex){2.5, 1.5}},(t_settings){1, 1}, 1};
+	vars.info = (t_info){&mandelbrot, 0, 0, 0, 1, 100, (t_com_coord){(t_complex){-2.5, -1.5}, (t_complex){2.5, 1.5}},(t_settings){1, 1}, 1};
 
     loop(&vars);
-	mlx_destroy_display(vars.mlx);
 	mlx_destroy_image(vars.mlx,vars.data.img);
 	mlx_destroy_window(vars.mlx, vars.win);
+	mlx_destroy_display(vars.mlx);
+	free(vars.mlx);
 	return (0);
 }
