@@ -34,8 +34,8 @@ int	julia(t_complex c, int max_iterations)
 	int			iter;
 
 	iter = 0;
-	num.real = 0.285;
-	num.imag = 0.01;
+	num.real = -0.8;
+	num.imag = 0.156;
 	while (iter < max_iterations && squared_norm(c) <= 4)
 	{
 		c = add_complex(square_complex(c), num);

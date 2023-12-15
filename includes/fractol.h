@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/14 14:04:39 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/15 17:28:54 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include <stdint.h>
+# include <stdint.h>
 #include "complex.h"
 
-#define W_W 1920
-#define W_H 1080
+# ifndef SIZE
+#  define SIZE 1
+#  define W_W 1920
+#  define W_H 1080
+# endif
 
 typedef struct s_pixel {
 	int x;
@@ -28,6 +31,10 @@ typedef struct s_pixel {
 	int g;
 	int b;
 } t_pixel;
+typedef struct s_settings {
+	short		colorset;
+	short 		d_color;
+}				t_settings;
 
 typedef struct	s_info {
 	int			(*fractal_func)(t_complex, int);
@@ -37,6 +44,8 @@ typedef struct	s_info {
 	double		zoom_factor;
     int			max_iter;
     t_com_coord comp;
+	t_settings 	settings;
+	short 		needredraw;
 }				t_info;
 
 typedef struct	s_data {

@@ -28,11 +28,11 @@ static t_info	calc_coord(t_info initv)
 static int	make_pixel(t_vars *vars, t_complex c, t_pixel pixel)
 {
 	pixel.iterations = vars->info.fractal_func(c, vars->info.max_iter);
-	if (pixel.iterations > vars->info.max_iter -1)
+	if (pixel.iterations > vars->info.max_iter - 1 && vars->info.settings.d_color == 1)
 		return (0);
-	pixel.r = (int)(sin(0.016 * (pixel.iterations) + 4) * 230 + 25);
-	pixel.g = (int)(sin(0.013 * (pixel.iterations) + 2) * 230 + 25);
-	pixel.b = (int)(sin(0.01 * (pixel.iterations) + 1) * 230 + 25);
+	pixel.r = (int)(sin(0.036 * (pixel.iterations) + 4) * 130 + 25);
+	pixel.g = (int)(sin(0.013 * (pixel.iterations) + 2) * 130 + 25);
+	pixel.b = (int)(sin(0.01 * (pixel.iterations) + 1) * 130 + 25);
 	return ((pixel.r << 16) | (pixel.g << 8) | pixel.b);
 }
 
