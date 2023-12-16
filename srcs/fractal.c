@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:30 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/14 15:01:31 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 06:01:59 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	julia(t_complex c, int max_iterations)
 	num.imag = 0.156;
 	while (iter < max_iterations && squared_norm(c) <= 4)
 	{
-		c = add_complex(square_complex(c), num);
+		c = add_complex_squared(c, num);
 		iter++;
 	}
 	return (iter);

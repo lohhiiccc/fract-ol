@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 02:43:41 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 05:47:54 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ typedef struct s_pixel {
 	int x;
 	int y;
 	int iterations;
-	int r;
-	int g;
-	int b;
+	short r;
+	short g;
+	short b;
 } t_pixel;
 
 typedef struct s_settings {

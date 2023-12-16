@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 04:10:15 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 05:38:51 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	make_pixel(t_vars *vars, t_complex c, t_pixel pixel)
 	pixel.r = (int)(sin(0.036 * (pixel.iterations) + 4) * 130 + 25);
 	pixel.g = (int)(sin(0.013 * (pixel.iterations) + 2) * 130 + 25);
 	pixel.b = (int)(sin(0.01 * (pixel.iterations) + 1) * 130 + 25);
-	return ((pixel.r << 16) | (pixel.g << 8) | pixel.b);
+	return (((int)pixel.r << 16) | ((int)pixel.g << 8) | (int)pixel.b);
 }
 
 t_complex	getcomplex(t_pixel pixel, t_info info)
