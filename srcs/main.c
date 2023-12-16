@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 06:50:46 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 07:02:30 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 		func = get_func(argv[1]);
 	if (argc < 2 || func == NULL)
 		return (ft_putstr_fd(RF_LST, 2), -1);
-	if (argc <= 2 && func== &julia)
+	if (argc <= 2 && func == &julia)
 		vars.info.z = (t_complex){-0.8, 0.156};
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
