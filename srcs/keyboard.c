@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:29:33 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 06:54:47 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 07:06:35 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,6 @@ void	del(t_vars *vars)
 	vars->info.needredraw = 1;
 }
 
-void	rmzr(t_vars *vars)
-{
-	vars->info.z.real -= 0.1;
-	vars->info.needredraw = 1;
-}
-void	addzr(t_vars *vars)
-{
-	vars->info.z.real += 0.1;
-	vars->info.needredraw = 1;
-}
-
-void	rmzi(t_vars *vars)
-{
-	vars->info.z.imag -= 0.1;
-	vars->info.needredraw = 1;
-}
-
-void	addzi(t_vars *vars)
-{
-	vars->info.z.imag += 0.1;
-	vars->info.needredraw = 1;
-}
 
 key_func	get_key_func(int keycode) {
 	unsigned char i;

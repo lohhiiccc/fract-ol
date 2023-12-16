@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:19:04 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 05:06:35 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 07:15:30 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,8 @@ void arrow_right(t_vars *vars);
 void	minus(t_vars *vars);
 void	plus(t_vars *vars);
 void	space(t_vars *vars);
+void	addzi(t_vars *vars);
+void	rmzi(t_vars *vars);
+void	addzr(t_vars *vars);
+void	rmzr(t_vars *vars);
 #endif

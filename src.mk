@@ -9,4 +9,5 @@ SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/mouse.c \
 	   $(SRCDIR)/arrow.c \
 	   $(SRCDIR)/keyboard.c \
-	   $(SRCDIR)/plus_minus.c
+	   $(SRCDIR)/plus_minus.c \
+	   $(SRCDIR)/edit_z.c
