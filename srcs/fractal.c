@@ -6,14 +6,13 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:30 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 06:59:11 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 07:18:19 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "complex.h"
 
-int burning_ship(t_complex z, t_complex c, int max_iterations)
+int	burning_ship(t_complex z, t_complex c, int max_iterations)
 {
 	int			iter;
 
@@ -26,7 +25,7 @@ int burning_ship(t_complex z, t_complex c, int max_iterations)
 	return (iter);
 }
 
-int julia(t_complex z, t_complex c, int max_iterations)
+int	julia(t_complex z, t_complex c, int max_iterations)
 {
 	int			iter;
 
@@ -39,7 +38,7 @@ int julia(t_complex z, t_complex c, int max_iterations)
 	return (iter);
 }
 
-int mandelbrot(t_complex z, t_complex c, int max_iterations)
+int	mandelbrot(t_complex z, t_complex c, int max_iterations)
 {
 	int			iter;
 
