@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 03:06:46 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 03:20:24 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	loop(t_vars *vars)
 	mlx_loop(vars->mlx);
 }
 
-fractal_func 	get_func(const char *name)
+static fractal_func	get_func(const char *name)
 {
 	void				*func;
-	int					i;
+	short				i;
 	const t_aliasfunc	funcs[] = {{"julia", &julia}, \
 									{"mandelbrot", &mandelbrot}, \
 									{"burning_ship", &burning_ship}};

@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:29:33 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/15 18:00:20 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 04:57:16 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,53 +18,32 @@
 #include "libft.h"
 #include <limits.h>
 
+void	esc(t_vars *vars)
+{
+	return ((void)close_window(vars));
+}
+
+key_func	get_key_func(int keycode)
+{
+	short		i;
+	const t_key	key[] = {{A_UP, &arrow_up}, {A_LEFT, &arrow_left}, \
+	{A_RIGHT, &arrow_right}, {A_DOWN, &arrow_down}, \
+	{KEY_MINUS, &minus}, {KEY_PLUS, &plus}, {ESC, &esc}, \
+	{SPACE, &space}, {-1, NULL}};
+
+	i = 0;
+	while (key[++i].key_id != -1)
+		if (key[i - 1].key_id == keycode)
+			return (key[i - 1].func);
+	return (0);
+}
+
 int	keyboard(int key, t_vars *vars)
 {
-	if (key == A_UP)
-		arrow_up(vars);
-	if (key == A_LEFT)
-		arrow_left(vars);
-	if (key == A_RIGHT)
-		arrow_right(vars);
-	if (key == A_DOWN)
-		arrow_down(vars);
-	if (key == KEY_MINUS)
-	{
-		if(vars->info.max_iter * 2 < INT_MIN)
-			ft_putstr_fd("error to much iteration", 1);
-		else
-			vars->info.max_iter *= 2;
-	}
-	if (key == KEY_PLUS)
-	{
-		vars->info.max_iter /= 2;
-		if (vars->info.max_iter < 50)
-			vars->info.max_iter = 50;
-		vars->info.needredraw = 1;
-	}
-	if (key == 65307)
-		close_window(vars);
-	if (key == 32)
-	{
-		if (vars->info.methode_type == 0)
-			vars->info.methode_type = 1;
-		else
-			vars->info.methode_type = 0;
-		vars->info.needredraw = 2;
-	}
-	if (key == 65288)
-	{
-		if (vars->info.settings.d_color == 1)
-			vars->info.settings.d_color = 0;
-		else
-			vars->info.settings.d_color = 1;
-		vars->info.needredraw = 1;
-	}
-	if (key == 65293)
-	{
+	key_func	key_f;
 
-	}
-	else
-		printf("touche: %d\n", key);
+	key_f = get_key_func(key);
+	if (key_f)
+		key_f(vars);
 	return (0);
 }

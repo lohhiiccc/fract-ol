@@ -1,7 +1,8 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Ofast -march=native -flto -fno-signed-zeros -funroll-loops
 
-SRCDIR = srcs
+NAME = fractol
+
 BUILDDIR = build
 LIBFTDIR = libft
 MLXLIBDIR = mlxlib
@@ -15,8 +16,6 @@ LIBFT = $(LIBFTDIR)/libft.a
 MLXLIB = $(MLXLIBDIR)/libmlx_Linux.a
 
 MLXFLAGS = -L$(MLXLIBDIR) -lmlx_Linux -lX11 -lm -lz -lXext
-
-NAME = fractol
 
 
 all: $(NAME)
