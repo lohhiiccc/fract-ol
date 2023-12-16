@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:19:04 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 07:18:35 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 08:32:03 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ typedef struct s_key{
 #define ESC 65307
 #define SPACE 32
 # define DEL 65288
+# define CR_1 91
+# define CR_2 93
+# define MINUS_DIGIT 45
+# define PLUS_DIGIT 61
 
 int keyboard(int key, t_vars *vars);
 void arrow_up(t_vars *vars);

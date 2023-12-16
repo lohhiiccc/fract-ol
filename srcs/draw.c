@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 07:22:15 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 08:34:23 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	draw_fractal(t_vars *vars)
 		pixel.x = 0;
 		while (pixel.x < W_W)
 		{
-			*(uint32_t *)img_ptr = make_pixel(vars, (t_complex){0, 0}, \
+			*(uint32_t *)img_ptr = make_pixel(vars, vars->info.z, \
 						getcomplex(pixel, calc_coord(vars->info)), pixel);
 			img_ptr = (uint8_t *)img_ptr + (vars->data.bits_per_pixel / 8);
 			pixel.x++;
