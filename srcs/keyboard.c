@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:29:33 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 05:20:36 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 06:54:47 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,29 @@ void	del(t_vars *vars)
 	vars->info.needredraw = 1;
 }
 
+void	rmzr(t_vars *vars)
+{
+	vars->info.z.real -= 0.1;
+	vars->info.needredraw = 1;
+}
+void	addzr(t_vars *vars)
+{
+	vars->info.z.real += 0.1;
+	vars->info.needredraw = 1;
+}
+
+void	rmzi(t_vars *vars)
+{
+	vars->info.z.imag -= 0.1;
+	vars->info.needredraw = 1;
+}
+
+void	addzi(t_vars *vars)
+{
+	vars->info.z.imag += 0.1;
+	vars->info.needredraw = 1;
+}
+
 key_func	get_key_func(int keycode) {
 	unsigned char i;
 	const t_key key[] = {{A_UP, &arrow_up}, \
@@ -44,7 +67,11 @@ key_func	get_key_func(int keycode) {
                         {KEY_PLUS, &plus}, \
                         {ESC, &esc}, \
                         {SPACE, &space}, \
-						{DEL, &del},
+						{DEL, &del}, \
+						{93, &addzr}, \
+						{91, &rmzr}, \
+						{45, &addzi}, \
+						{61, &rmzi}, \
                         {-1, NULL}};
 	i = 0;
 	while (key[i].key_id != -1)
@@ -63,5 +90,6 @@ int	keyboard(int key, t_vars *vars)
 	key_f = get_key_func(key);
 	if (key_f)
 		key_f(vars);
+	printf("\n%d\n", key);
 	return (0);
 }

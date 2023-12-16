@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 05:38:51 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 06:34:07 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static t_info	calc_coord(t_info initv)
 	return (info);
 }
 
-static int	make_pixel(t_vars *vars, t_complex c, t_pixel pixel)
+static int make_pixel(t_vars *vars, t_complex z, t_complex c, t_pixel pixel)
 {
-	pixel.iterations = vars->info.fractal_func(c, vars->info.max_iter);
+	pixel.iterations = vars->info.fractal_func(z, c, vars->info.max_iter);
 	if (pixel.iterations > vars->info.max_iter - 1 \
 		&& vars->info.settings.d_color == 1)
 		return (0);
@@ -61,8 +61,7 @@ void	fast_draw(t_vars *vars)
 		while (pixel.x < W_W)
 		{
 			if (!(pixel.x % 2 == 1 || pixel.y % 2 == 1))
-				*(uint32_t *)img_ptr = make_pixel(vars, \
-				getcomplex(pixel, calc_coord(vars->info)), pixel);
+				*(uint32_t *)img_ptr = make_pixel(vars, vars->info.z, getcomplex(pixel, calc_coord(vars->info)), pixel);
 			else
 				*(uint32_t *)img_ptr = 1;
 			img_ptr = (uint8_t *)img_ptr + (vars->data.bits_per_pixel / 8);
@@ -86,8 +85,7 @@ void	draw_fractal(t_vars *vars)
 		pixel.x = 0;
 		while (pixel.x < W_W)
 		{
-			*(uint32_t *)img_ptr = make_pixel \
-			(vars, getcomplex(pixel, calc_coord(vars->info)), pixel);
+			*(uint32_t *)img_ptr = make_pixel(vars, (t_complex){0,0}, getcomplex(pixel, calc_coord(vars->info)), pixel);
 			img_ptr = (uint8_t *)img_ptr + (vars->data.bits_per_pixel / 8);
 			pixel.x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 05:47:54 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 06:28:35 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_settings {
 	short 		d_color;
 }				t_settings;
 
-typedef int (*fractal_func)(t_complex, int);
+typedef int (*fractal_func)(t_complex z, t_complex c, int);
 
 typedef struct s_aliasfunc{
 	const char	*fractal_name;
@@ -51,6 +51,7 @@ typedef struct	s_info {
 	double 			y;
 	double			zoom_factor;
     int				max_iter;
+	t_complex 		z;
     t_com_coord 	comp;
 	t_settings 		settings;
 	short 			needredraw;
@@ -71,13 +72,13 @@ typedef struct	s_vars {
     t_info 		info;
 }				t_vars;
 
-int	julia(t_complex c, int max_iterations);
+int julia(t_complex z, t_complex c, int max_iterations);
 int	close_window(t_vars *vars);
 void	even_pixel(uint32_t *img_ptr);
 void	odd_pixel(uint32_t *img_ptr);
 void	fast_draw(t_vars *vars);
 void draw_fractal(t_vars *vars);
-int	mandelbrot(t_complex c, int max_iterations);
-int burning_ship(t_complex c, int max_iterations);
+int mandelbrot(t_complex z, t_complex c, int max_iterations);
+int burning_ship(t_complex z, t_complex c, int max_iterations);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 #endif
