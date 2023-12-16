@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:19:04 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 04:54:13 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 05:06:35 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,4 @@ void arrow_right(t_vars *vars);
 void	minus(t_vars *vars);
 void	plus(t_vars *vars);
 void	space(t_vars *vars);
-{
 #endif

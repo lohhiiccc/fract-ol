@@ -6,10 +6,11 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 03:20:24 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 05:22:11 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "mlx.h"
 #include "libft.h"
 #include "mouse.h"
