@@ -6,13 +6,12 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 08:34:23 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 09:19:33 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
-#include "pixel.h"
 
 static t_info	calc_coord(t_info initv)
 {

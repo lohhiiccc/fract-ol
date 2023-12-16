@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 06:28:35 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 09:08:35 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@
 # include <stdint.h>
 #include "complex.h"
 
-# ifndef SIZE
-#  define SIZE 1
-#  define W_W 1920
-#  define W_H 1080
-# endif
+# define W_W 1920
+# define W_H 1080
 
 typedef struct s_pixel {
 	int x;

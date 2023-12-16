@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:29:33 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 08:31:30 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 09:17:46 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ key_func	get_key_func(int keycode)
 							{KEY_MINUS, &minus}, {KEY_PLUS, &plus}, \
 							{ESC, &esc}, {SPACE, &space}, {DEL, &del}, \
 							{CR_2, &addzr}, {CR_1, &rmzr}, \
-							{PLUS_DIGIT, &addzi}, {MINUS_DIGIT, &rmzi}, {-1, NULL}};
+							{PLUS_DIGIT, &addzi}, {MINUS_DIGIT, &rmzi}, \
+							{-1, NULL}};
 
 	i = 0;
 	while (key[i].key_id != -1)

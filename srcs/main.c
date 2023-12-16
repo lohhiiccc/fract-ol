@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 07:23:20 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 09:18:02 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	loop(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);
 	mlx_mouse_hook(vars->win, mouse_hook, vars);
 	mlx_key_hook(vars->win, keyboard, vars);
-	mlx_hook(vars->win, 17, 0, close_window, &vars);
+	mlx_hook(vars->win, 17, 0, close_window, vars);
 	ft_putnbr_fd(vars->info.zoom_factor, 1);
 	mlx_loop_hook(vars->mlx, render_img, vars);
 	mlx_loop(vars->mlx);
@@ -72,6 +72,7 @@ int	main(int argc, char **argv)
 		func = get_func(argv[1]);
 	if (argc < 2 || func == NULL)
 		return (ft_putstr_fd(RF_LST, 2), -1);
+	vars.info.z = (t_complex){0, 0};
 	if (argc <= 2 && func == &julia)
 		vars.info.z = (t_complex){-0.8, 0.156};
 	vars.mlx = mlx_init();
