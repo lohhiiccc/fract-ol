@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/15 18:00:09 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/16 02:43:41 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,30 @@ typedef struct s_pixel {
 	int g;
 	int b;
 } t_pixel;
+
 typedef struct s_settings {
 	short		colorset;
 	short 		d_color;
 }				t_settings;
 
+typedef int (*fractal_func)(t_complex, int);
+
+typedef struct s_aliasfunc{
+	const char	*fractal_name;
+	fractal_func fractal_func;
+}				t_aliasfunc;
+
 typedef struct	s_info {
-	int			(*fractal_func)(t_complex, int);
-	int			methode_type;
-	double		x;
-	double 		y;
-	double		zoom_factor;
-    int			max_iter;
-    t_com_coord comp;
-	t_settings 	settings;
-	short 		needredraw;
-}				t_info;
+	fractal_func	fractal_func;
+	int				methode_type;
+	double			x;
+	double 			y;
+	double			zoom_factor;
+    int				max_iter;
+    t_com_coord 	comp;
+	t_settings 		settings;
+	short 			needredraw;
+}					t_info;
 
 typedef struct	s_data {
 	void		*img;
