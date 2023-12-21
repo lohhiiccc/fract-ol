@@ -6,16 +6,15 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 09:08:35 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/20 14:09:27 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
 # include <stdint.h>
-#include "complex.h"
+# include "complex.h"
 
 # define W_W 1920
 # define W_H 1080
@@ -38,6 +37,7 @@ typedef int (*fractal_func)(t_complex z, t_complex c, int);
 
 typedef struct s_aliasfunc{
 	const char	*fractal_name;
+	short		len;
 	fractal_func fractal_func;
 }				t_aliasfunc;
 
@@ -63,10 +63,10 @@ typedef struct	s_data {
 }				t_data;
 
 typedef struct	s_vars {
-	void	    *mlx;
-	void	    *win;
-	t_data  	data;
-    t_info 		info;
+	void		*mlx;
+	void		*win;
+	t_data		data;
+    t_info		info;
 }				t_vars;
 
 int julia(t_complex z, t_complex c, int max_iterations);
