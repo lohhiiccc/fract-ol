@@ -27,16 +27,9 @@ int	render_img(t_vars *vars)
 	if (vars->info.needredraw == 1 || vars->info.needredraw == 2)
 	{
 		if (vars->info.needredraw == 1)
-		{
 			fast_draw(vars);
-			vars->info.needredraw = 0;
-		}
 		if (vars->info.needredraw == 2)
-		{
-			printf("redraw\n");
 			draw_fractal(vars);
-			vars->info.needredraw = 0;
-		}
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 18:42:18 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 18:48:58 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	fast_draw(t_vars *vars)
 	}
 	odd_pixel((uint32_t *)vars->data.addr);
 	even_pixel((uint32_t *)vars->data.addr);
+	vars->info.needredraw = 0;
 }
 
 void	draw_fractal(t_vars *vars)
@@ -96,4 +97,5 @@ void	draw_fractal(t_vars *vars)
 		}
 		pixel.y++;
 	}
+	vars->info.needredraw = 0;
 }
