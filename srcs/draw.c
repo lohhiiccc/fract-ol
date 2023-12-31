@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 18:00:42 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 18:42:18 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ static t_info	calc_coord(t_info initv)
 
 static int	make_pixel(t_vars *vars, t_complex z, t_complex c, t_pixel pixel)
 {
-	const	colorset color_tab[] = {&colorset_one, &colorset_two, &colorset_three};
-	int 	i;
+	const t_colorset	color_tab[] = \
+		{&colorset_one, &colorset_two, &colorset_three};
+	int					i;
 
 	i = 0;
 	pixel.iterations = vars->info.fractal_func(z, c, vars->info.max_iter);

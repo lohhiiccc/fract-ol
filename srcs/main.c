@@ -53,7 +53,7 @@ void	loop(t_vars *vars)
 	mlx_loop(vars->mlx);
 }
 
-static fractal_func	get_func(const char *name)
+static t_fractal_func	get_func(const char *name)
 {
 	short				i;
 	const t_aliasfunc	funcs[3] = {{"julia", 6, &julia}, \

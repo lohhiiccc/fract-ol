@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:29:33 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 18:03:04 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 18:40:58 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ static void	del(t_vars *vars)
 	vars->info.needredraw = 1;
 }
 
-
-
-static key_func	get_key_func(int keycode)
+static t_key_func	get_key_func(int keycode)
 {
 	unsigned char	i;
 	const t_key		key[] = {{A_UP, &arrow_up}, {A_LEFT, &arrow_left}, \
@@ -54,7 +52,7 @@ static key_func	get_key_func(int keycode)
 
 int	keyboard(int key, t_vars *vars)
 {
-	key_func	key_f;
+	t_key_func	key_f;
 
 	key_f = get_key_func(key);
 	if (key_f)

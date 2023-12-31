@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:19:04 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/21 21:38:19 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 18:33:14 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 # define KEYBOARD_H
 # include "fractol.h"
 
-typedef void (*key_func)(t_vars *vars);
+typedef void	(*t_key_func)(t_vars *vars);
 
-typedef struct s_key{
+typedef struct s_key
+{
 	int			key_id;
-	key_func 	func;
+	t_key_func	func;
 }				t_key;
 
 # define A_DOWN 65364

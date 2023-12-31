@@ -6,18 +6,17 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 17:47:15 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 17:53:54 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 18:44:44 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "fractol.h"
 
-static int make_color(t_pixel pixel)
+static int	make_color(t_pixel pixel)
 {
 	return (((int)pixel.r << 16) | ((int)pixel.g << 8) | (int)pixel.b);
 }
-
 
 int	colorset_one(t_pixel pixel)
 {
@@ -27,7 +26,7 @@ int	colorset_one(t_pixel pixel)
 	return (make_color(pixel));
 }
 
-int colorset_two(t_pixel pixel)
+int	colorset_two(t_pixel pixel)
 {
 	pixel.r = (int)(sin(0.036 * (pixel.iterations)) * 130);
 	pixel.g = (int)(sin(0.013 * (pixel.iterations)) * 130);
@@ -35,7 +34,7 @@ int colorset_two(t_pixel pixel)
 	return (make_color(pixel));
 }
 
-int colorset_three(t_pixel pixel)
+int	colorset_three(t_pixel pixel)
 {
 	pixel.r = (int)(sin(0.00 * (pixel.iterations)) * 130);
 	pixel.g = (int)(sin(0.083 * (pixel.iterations)) * 130);
