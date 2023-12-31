@@ -6,21 +6,21 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 19:12:51 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 19:37:23 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "colorset.h"
 
-static t_info	calc_coord(t_info initv)
+static t_info	calc_coord(t_info init_v)
 {
 	t_info	info;
 
-	info.comp.max.imag = initv.y + (initv.comp.max.imag * initv.zoom_factor);
-	info.comp.max.real = initv.x + (initv.comp.max.real * initv.zoom_factor);
-	info.comp.min.imag = initv.y + (initv.comp.min.imag * initv.zoom_factor);
-	info.comp.min.real = initv.x + (initv.comp.min.real * initv.zoom_factor);
+	info.comp.max.imag = init_v.y + (init_v.comp.max.imag * init_v.zoom_factor);
+	info.comp.max.real = init_v.x + (init_v.comp.max.real * init_v.zoom_factor);
+	info.comp.min.imag = init_v.y + (init_v.comp.min.imag * init_v.zoom_factor);
+	info.comp.min.real = init_v.x + (init_v.comp.min.real * init_v.zoom_factor);
 	return (info);
 }
 
