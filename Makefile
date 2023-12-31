@@ -1,6 +1,6 @@
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror -Ofast -march=native -flto -fno-signed-zeros -funroll-loops
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread -march=native -flto -fno-signed-zeros -funroll-loops
+CFLAGS = -Wall -Wextra -Werror -Ofast -march=native -flto -fno-signed-zeros -funroll-loops
+#CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread -march=native -flto -fno-signed-zeros -funroll-loops
 NAME = fractol
 
 BUILDDIR = build
