@@ -6,35 +6,38 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 08:34:23 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 19:37:23 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <math.h>
-#include "pixel.h"
+#include "colorset.h"
 
-static t_info	calc_coord(t_info initv)
+static t_info	calc_coord(t_info init_v)
 {
 	t_info	info;
 
-	info.comp.max.imag = initv.y + (initv.comp.max.imag / initv.zoom_factor);
-	info.comp.max.real = initv.x + (initv.comp.max.real / initv.zoom_factor);
-	info.comp.min.imag = initv.y + (initv.comp.min.imag / initv.zoom_factor);
-	info.comp.min.real = initv.x + (initv.comp.min.real / initv.zoom_factor);
+	info.comp.max.imag = init_v.y + (init_v.comp.max.imag * init_v.zoom_factor);
+	info.comp.max.real = init_v.x + (init_v.comp.max.real * init_v.zoom_factor);
+	info.comp.min.imag = init_v.y + (init_v.comp.min.imag * init_v.zoom_factor);
+	info.comp.min.real = init_v.x + (init_v.comp.min.real * init_v.zoom_factor);
 	return (info);
 }
 
 static int	make_pixel(t_vars *vars, t_complex z, t_complex c, t_pixel pixel)
 {
+	const t_colorset	color_tab[] = \
+		{&colorset_one, &colorset_two, &colorset_three};
+	int					i;
+
+	i = 0;
 	pixel.iterations = vars->info.fractal_func(z, c, vars->info.max_iter);
 	if (pixel.iterations > vars->info.max_iter - 1 \
 		&& vars->info.settings.d_color == 1)
 		return (0);
-	pixel.r = (int)(sin(0.036 * (pixel.iterations) + 4) * 130 + 25);
-	pixel.g = (int)(sin(0.013 * (pixel.iterations) + 2) * 130 + 25);
-	pixel.b = (int)(sin(0.01 * (pixel.iterations) + 1) * 130 + 25);
-	return (((int)pixel.r << 16) | ((int)pixel.g << 8) | (int)pixel.b);
+	while (i != vars->info.settings.colorset && i <= 3)
+		i++;
+	return (color_tab[i - 1](pixel));
 }
 
 t_complex	getcomplex(t_pixel pixel, t_info info)
@@ -72,6 +75,7 @@ void	fast_draw(t_vars *vars)
 	}
 	odd_pixel((uint32_t *)vars->data.addr);
 	even_pixel((uint32_t *)vars->data.addr);
+	vars->info.needredraw = 0;
 }
 
 void	draw_fractal(t_vars *vars)
@@ -93,4 +97,5 @@ void	draw_fractal(t_vars *vars)
 		}
 		pixel.y++;
 	}
+	vars->info.needredraw = 0;
 }

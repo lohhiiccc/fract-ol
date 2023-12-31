@@ -1,28 +1,10 @@
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ofast -march=native -flto -fno-signed-zeros -funroll-loops
-
-NAME = fractol
-
-BUILDDIR = build
-LIBFTDIR = libft
-MLXLIBDIR = mlxlib
-INCLUDEDIR = includes
-include src.mk
-
-OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
-DEPS = $(OBJS:.o=.d)
-
-LIBFT = $(LIBFTDIR)/libft.a
-MLXLIB = $(MLXLIBDIR)/libmlx_Linux.a
-
-MLXFLAGS = -L$(MLXLIBDIR) -lmlx_Linux -lX11 -lm -lz -lXext
-
+include comp/src.mk
+include comp/var.mk
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLXLIB) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS)
-
 
 $(LIBFT):
 	make -C $(LIBFTDIR)
@@ -37,7 +19,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.c
 -include $(DEPS)
 
 clean:
-	make -C $(LIBFTDIR) clean
+	make -C $(LIBFTDIR) fclean
 	make -C $(MLXLIBDIR) clean
 	rm -rf $(BUILDDIR)
 

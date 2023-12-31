@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 07:23:20 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/21 21:31:41 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include "mouse.h"
 #include "keyboard.h"
-#define RF_LST "./fractol <julia/mandelbrot/burning_ship>"
+#define FR_LST "./fractol <julia/mandelbrot/burning_ship>"
 
 int	close_window(t_vars *vars)
 {
@@ -40,27 +40,24 @@ void	loop(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);
 	mlx_mouse_hook(vars->win, mouse_hook, vars);
 	mlx_key_hook(vars->win, keyboard, vars);
-	mlx_hook(vars->win, 17, 0, close_window, &vars);
+	mlx_hook(vars->win, 17, 0, close_window, vars);
 	ft_putnbr_fd(vars->info.zoom_factor, 1);
 	mlx_loop_hook(vars->mlx, render_img, vars);
 	mlx_loop(vars->mlx);
 }
 
-static fractal_func	get_func(const char *name)
+static t_fractal_func	get_func(const char *name)
 {
-	void				*func;
 	short				i;
-	const t_aliasfunc	funcs[] = {{"julia", &julia}, \
-									{"mandelbrot", &mandelbrot}, \
-									{"burning_ship", &burning_ship}};
+	const t_aliasfunc	funcs[3] = {{"julia", 6, &julia}, \
+									{"mandelbrot", 11, &mandelbrot}, \
+									{"burning_ship", 13, &burning_ship}};
 
 	i = 0;
-	func = NULL;
-	while (++i <= (int)(sizeof(funcs) / sizeof(t_aliasfunc)))
-		if (!ft_strncmp(name, funcs[i - 1].fractal_name, \
-			ft_strlen(funcs[i - 1].fractal_name) + 1))
-			func = funcs[i - 1].fractal_func;
-	return (func);
+	while (++i <= 3)
+		if (!ft_strncmp(name, funcs[i - 1].fractal_name, funcs[i - 1].len))
+			return (funcs[i - 1].fractal_func);
+	return (NULL);
 }
 
 int	main(int argc, char **argv)
@@ -71,7 +68,8 @@ int	main(int argc, char **argv)
 	if (argc >= 2)
 		func = get_func(argv[1]);
 	if (argc < 2 || func == NULL)
-		return (ft_putstr_fd(RF_LST, 2), -1);
+		return (ft_putstr_fd(FR_LST, 2), -1);
+	vars.info.z = (t_complex){0, 0};
 	if (argc <= 2 && func == &julia)
 		vars.info.z = (t_complex){-0.8, 0.156};
 	vars.mlx = mlx_init();

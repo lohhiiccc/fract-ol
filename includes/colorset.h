@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse.h                                            :+:      :+:    :+:   */
+/*   colorset.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 10:49:41 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 18:36:52 by lrio             ###   ########.fr       */
+/*   Created: 2023/12/31 17:43:42 by lrio              #+#    #+#             */
+/*   Updated: 2023/12/31 18:26:27 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MOUSE_H
-# define MOUSE_H
-# include "fractol.h"
+#ifndef COLORSET_H
+# define COLORSET_H
 
-int	mouse_hook(int button, int x, int y, t_vars *vars);
-
+typedef int	(*t_colorset)(t_pixel pixel);
+int	colorset_two(t_pixel pixel);
+int	colorset_one(t_pixel pixel);
+int	colorset_three(t_pixel pixel);
 #endif

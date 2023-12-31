@@ -10,4 +10,6 @@ SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/arrow.c \
 	   $(SRCDIR)/keyboard.c \
 	   $(SRCDIR)/plus_minus.c \
-	   $(SRCDIR)/edit_z.c
+	   $(SRCDIR)/edit_z.c \
+	   $(SRCDIR)/num.c \
+	   $(SRCDIR)/colorset.c

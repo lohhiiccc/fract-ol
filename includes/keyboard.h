@@ -6,20 +6,20 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:19:04 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/16 08:32:03 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 18:33:14 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef KEYBOARD_H
 # define KEYBOARD_H
 # include "fractol.h"
 
-typedef void (*key_func)(t_vars *vars);
+typedef void	(*t_key_func)(t_vars *vars);
 
-typedef struct s_key{
-	int 	key_id;
-	key_func 	func;
+typedef struct s_key
+{
+	int			key_id;
+	t_key_func	func;
 }				t_key;
 
 # define A_DOWN 65364
@@ -30,19 +30,25 @@ typedef struct s_key{
 # define KEY_PLUS 65453
 # define MOUSE_S_UP 4
 # define MOUSE_S_DOWN 5
-#define ESC 65307
-#define SPACE 32
+# define ESC 65307
+# define SPACE 32
 # define DEL 65288
 # define CR_1 91
 # define CR_2 93
 # define MINUS_DIGIT 45
 # define PLUS_DIGIT 61
+# define ONE 49
+# define TWO 50
+# define THREE 51
 
-int keyboard(int key, t_vars *vars);
-void arrow_up(t_vars *vars);
-void arrow_down(t_vars *vars);
-void arrow_left(t_vars *vars);
-void arrow_right(t_vars *vars);
+void	keythree(t_vars *vars);
+void	keytwo(t_vars *vars);
+void	keyone(t_vars *vars);
+int		keyboard(int key, t_vars *vars);
+void	arrow_up(t_vars *vars);
+void	arrow_down(t_vars *vars);
+void	arrow_left(t_vars *vars);
+void	arrow_right(t_vars *vars);
 void	minus(t_vars *vars);
 void	plus(t_vars *vars);
 void	space(t_vars *vars);
