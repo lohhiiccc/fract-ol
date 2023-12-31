@@ -1,5 +1,5 @@
-include src.mk
-include var.mk
+include comp/src.mk
+include comp/var.mk
 
 all: $(NAME)
 
