@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:18 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 19:34:02 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 20:39:23 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 static void	scroll_up(t_vars *vars, int x, int y)
 {
-	y = (y - W_H / 2);
-	x = (x - W_W / 2);
-	printf("x: %d | y: %d\n", x, y);
+	double debuga =(x - W_W / 2);
+	double debugb =(y - W_H / 2);
+	printf("---------------------------------------\nx: %d\t\t|\ty: %d\nx: %f\t|\ty: %f\nx: %f\t|\ty: %f\n", x, y, debuga, debugb, vars->info.x, vars->info.y);
 	vars->info.zoom_factor *=0.5;
 	vars->info.needredraw = 1;
 }

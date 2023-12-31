@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:22:42 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/15 14:32:43 by lrio             ###   ########.fr       */
+/*   Updated: 2023/12/31 19:55:37 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@
 
 void	arrow_up(t_vars *vars)
 {
-	vars->info.y -= 0.8 / (1.6 * vars->info.zoom_factor);
+	vars->info.y -= 0.8 * (1.6 * vars->info.zoom_factor);
 	vars->info.needredraw = 1;
 }
 
 void	arrow_down(t_vars *vars)
 {
-	vars->info.y += 0.8 / (1.6 * vars->info.zoom_factor);
+	vars->info.y += 0.8 * (1.6 * vars->info.zoom_factor);
 	vars->info.needredraw = 1;
 }
 
 void	arrow_left(t_vars *vars)
 {
-	vars->info.x -= 0.8 / (1.6 * vars->info.zoom_factor);
+	vars->info.x -= 0.8 * (1.6 * vars->info.zoom_factor);
 	vars->info.needredraw = 1;
 }
 
 void	arrow_right(t_vars *vars)
 {
-	vars->info.x += 0.8 / (1.6 * vars->info.zoom_factor);
+	vars->info.x += 0.8 * (1.6 * vars->info.zoom_factor);
 	vars->info.needredraw = 1;
 }
