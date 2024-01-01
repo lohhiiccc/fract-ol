@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 18:31:49 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/01 02:02:22 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 # include <stdint.h>
 # include "complex.h"
 
-# define W_W 1920
-# define W_H 1080
+# define W_W 2560
+# define W_H 1440
+
+//# define W_W 1920
+//# define W_H 1080
 
 typedef struct s_pixel
 {
@@ -83,5 +86,4 @@ void	fast_draw(t_vars *vars);
 void	draw_fractal(t_vars *vars);
 int		mandelbrot(t_complex z, t_complex c, int max_iterations);
 int		burning_ship(t_complex z, t_complex c, int max_iterations);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 #endif

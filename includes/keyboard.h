@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:19:04 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 18:33:14 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/01 03:16:40 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_key
 	t_key_func	func;
 }				t_key;
 
+# define LEFT_CLICK 1
 # define A_DOWN 65364
 # define A_UP 65362
 # define A_RIGHT 65363
