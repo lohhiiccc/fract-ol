@@ -6,13 +6,14 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:29:33 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 18:40:58 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/01 03:27:31 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "fractol.h"
 #include "keyboard.h"
+#include <math.h>
 
 static void	esc(t_vars *vars)
 {
@@ -57,6 +58,5 @@ int	keyboard(int key, t_vars *vars)
 	key_f = get_key_func(key);
 	if (key_f)
 		key_f(vars);
-	printf("\n%d\n", key);
 	return (0);
 }

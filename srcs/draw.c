@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 19:37:23 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/01 03:14:59 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static t_info	calc_coord(t_info init_v)
 
 static int	make_pixel(t_vars *vars, t_complex z, t_complex c, t_pixel pixel)
 {
+	int					i;
 	const t_colorset	color_tab[] = \
 		{&colorset_one, &colorset_two, &colorset_three};
-	int					i;
 
 	i = 0;
 	pixel.iterations = vars->info.fractal_func(z, c, vars->info.max_iter);
@@ -65,7 +65,7 @@ void	fast_draw(t_vars *vars)
 		{
 			if (!(pixel.x % 2 == 1 || pixel.y % 2 == 1))
 				*(uint32_t *)img_ptr = make_pixel(vars, vars->info.z, \
-							getcomplex(pixel, calc_coord(vars->info)), pixel);
+						getcomplex(pixel, calc_coord(vars->info)), pixel);
 			else
 				*(uint32_t *)img_ptr = 1;
 			img_ptr = (uint8_t *)img_ptr + (vars->data.bits_per_pixel / 8);

@@ -3,7 +3,7 @@ include comp/var.mk
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLXLIB) $(OBJS)
+$(NAME):  $(LIBFT) $(MLXLIB) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS)
 
 $(LIBFT):

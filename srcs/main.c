@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 20:36:22 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/01 01:57:03 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 	&vars.data.bits_per_pixel, &vars.data.line_length, &vars.data.endian);
 	vars.info = (t_info){func, 0, 0, 0, 1, \
 	100, vars.info.z, (t_com_coord){(t_complex){-2.5, -1.5}, \
-	(t_complex){2.5, 1.5}}, (t_settings){1, 1}, 1};
+	(t_complex){2.5, 1.5}}, (t_settings){3, 1}, 1};
 	loop(&vars);
 	mlx_destroy_image(vars.mlx, vars.data.img);
 	mlx_destroy_window(vars.mlx, vars.win);
