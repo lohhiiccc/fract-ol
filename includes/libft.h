@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:46 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/01 23:51:32 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/02 16:05:36 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_memcmp(const void *p1, const void *p2, size_t n);
 int		ft_atoi(const char *str);
-long 	ft_atol(const char *str);
+long	ft_atol(const char *str);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
