@@ -1,7 +1,7 @@
 NAME = fractol
 
-#CFLAGS = -Wall -Wextra -Werror -Ofast -march=native -flto -fno-signed-zeros -funroll-loops
-CFLAGS = -Wall -Wextra -Werror -g3 -march=native -flto -fno-signed-zeros -funroll-loops
+CFLAGS = -Wall -Wextra -Werror -Ofast -march=native -flto -fno-signed-zeros -funroll-loops
+#CFLAGS = -Wall -Wextra -Werror -g3 -march=native -flto -fno-signed-zeros -funroll-loops
 MLXFLAGS = -L$(MLXLIBDIR) -lmlx_Linux -lX11 -lm -lz -lXext
 
 BUILDDIR = build

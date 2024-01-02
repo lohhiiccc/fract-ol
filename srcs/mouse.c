@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:18 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/01 15:01:48 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/02 14:47:03 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ static void	scroll_down(t_vars *vars)
 
 static void	left_click(t_vars *vars, int x, int y)
 {
-	vars->info.x = capnum(2, ((vars->info.x + (((x - W_W / 2.0) / (0.2000 * W_W))) * vars->info.zoom_factor)));
-	vars->info.y = capnum(2, ((vars->info.y + (((y - W_H / 2.0) / (0.3375 * W_H))) * vars->info.zoom_factor)));
+	vars->info.x = capnum(2, ((vars->info.x + \
+		(((x - W_W / 2.0) / (0.2000 * W_W))) * vars->info.zoom_factor)));
+	vars->info.y = capnum(2, ((vars->info.y + \
+		(((y - W_H / 2.0) / (0.3375 * W_H))) * vars->info.zoom_factor)));
 	vars->info.needredraw = 1;
 }
 

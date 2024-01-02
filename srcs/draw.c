@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/02 06:37:05 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/02 14:47:15 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	fast_draw(t_vars *vars)
 		while (pixel.x < W_W)
 		{
 			if (!(pixel.x % 2 == 1 || pixel.y % 2 == 1))
-					*(uint32_t *)img_ptr = make_pixel(vars, vars->info.z, \
-						getcomplex(pixel, calc_coord(vars->info)), pixel);
+				*(uint32_t *)img_ptr = make_pixel(vars, vars->info.z, \
+					getcomplex(pixel, calc_coord(vars->info)), pixel);
 			else
 				*(uint32_t *)img_ptr = 1;
 			img_ptr = (uint8_t *)img_ptr + (vars->data.bits_per_pixel / 8);

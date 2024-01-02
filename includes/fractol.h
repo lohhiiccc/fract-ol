@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/01 15:08:57 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/02 14:45:50 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,14 @@ typedef struct s_vars
 	t_info		info;
 }				t_vars;
 
-int		julia(t_complex z, t_complex c, int max_iterations);
-int		close_window(t_vars *vars);
-void	even_pixel(uint32_t *img_ptr);
-void	odd_pixel(uint32_t *img_ptr);
-void	fast_draw(t_vars *vars);
-void	draw_fractal(t_vars *vars);
-int		mandelbrot(t_complex z, t_complex c, int max_iterations);
-int		burning_ship(t_complex z, t_complex c, int max_iterations);
+int				parsing(const char *path, t_vars *vars, void *func);
+t_fractal_func	get_func(const char *name);
+int				julia(t_complex z, t_complex c, int max_iterations);
+int				close_window(t_vars *vars);
+void			even_pixel(uint32_t *img_ptr);
+void			odd_pixel(uint32_t *img_ptr);
+void			fast_draw(t_vars *vars);
+void			draw_fractal(t_vars *vars);
+int				mandelbrot(t_complex z, t_complex c, int max_iterations);
+int				burning_ship(t_complex z, t_complex c, int max_iterations);
 #endif
