@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   write_var.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrio <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 17:13:17 by lrio              #+#    #+#             */
-/*   Updated: 2023/11/10 18:25:11 by lrio             ###   ########.fr       */
+/*   Created: 2024/01/02 17:35:15 by lrio              #+#    #+#             */
+/*   Updated: 2024/01/02 17:35:15 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef WRITE_VAR_H
+# define WRITE_VAR_H
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
-}
+void	write_vinfo_int(t_vars *vars, int num, int i);
+#endif

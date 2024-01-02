@@ -17,4 +17,6 @@ SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/get_next_line_utils.c \
 	   $(SRCDIR)/parsing_file.c \
 	   $(SRCDIR)/mlx_utils.c \
-	   $(SRCDIR)/set_var.c
+	   $(SRCDIR)/set_var.c \
+	   $(SRCDIR)/save_fractal.c \
+	   $(SRCDIR)/write_var.c
