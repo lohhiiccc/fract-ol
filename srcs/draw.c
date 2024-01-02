@@ -6,10 +6,11 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/01 03:14:59 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/02 06:37:05 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "fractol.h"
 #include "colorset.h"
 
@@ -64,7 +65,7 @@ void	fast_draw(t_vars *vars)
 		while (pixel.x < W_W)
 		{
 			if (!(pixel.x % 2 == 1 || pixel.y % 2 == 1))
-				*(uint32_t *)img_ptr = make_pixel(vars, vars->info.z, \
+					*(uint32_t *)img_ptr = make_pixel(vars, vars->info.z, \
 						getcomplex(pixel, calc_coord(vars->info)), pixel);
 			else
 				*(uint32_t *)img_ptr = 1;
@@ -97,5 +98,6 @@ void	draw_fractal(t_vars *vars)
 		}
 		pixel.y++;
 	}
+	printf("x: %20.18f\n", vars->info.zoom_factor);
 	vars->info.needredraw = 0;
 }
