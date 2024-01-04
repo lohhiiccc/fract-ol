@@ -14,7 +14,7 @@ $(MLXLIB):
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(BUILDDIR)
-	$(CC) $(CFLAGS) -I$(INCLUDEDIR) -MMD -MP -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDEDIR) -I$(LIBFTDIR) -I$(MLXLIBDIR) -MMD -MP -c $< -o $@
 
 -include $(DEPS)
 
