@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 13:54:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 09:54:06 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 18:29:46 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	set_parsing_var(t_engine *vars, int fd, void *func)
 			return (-1);
 		line[ft_strlen(line) - 1] = '\0';
 		if (ft_strncmp(line, f_format[i - 1], ft_strlen(f_format[i - 1])))
-			return (-1);
+			return (free(line), -1);
 		if (i - 1 == 0)
 		{
 			func = get_func(line + ft_strlen(f_format[0]));
@@ -100,7 +100,7 @@ int	parsing(const char *path, t_engine *vars, void *func)
 	if (fd < 0)
 		return (-1);
 	if (set_parsing_var(vars, fd, func) == -1)
-		return (-1);
+		return (close(fd), -1);
 	if (vars->fractal.zoom_factor == 0)
 		vars->fractal.zoom_factor = 1;
 	close(fd);

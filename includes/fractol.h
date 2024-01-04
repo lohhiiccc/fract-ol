@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 17:08:14 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:43:54 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 # include <stdint.h>
 # include "complex.h"
 
-//# define W_W 2560
-//# define W_H 1440
-
 # define W_W 1920
 # define W_H 1080
+
+enum e_method_type {
+	DEFAULT = 0,
+	FAST = 1,
+	FULL = 2,
+};
 
 typedef struct s_pixel
 {
@@ -51,7 +54,7 @@ typedef struct s_aliasfunc
 typedef struct s_fractal
 {
 	t_fractal_func		fractal_func;
-	int					methode_type;
+	int methode_type;
 	double				x;
 	double				y;
 	double				zoom_factor;

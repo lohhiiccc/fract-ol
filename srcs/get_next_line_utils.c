@@ -6,7 +6,7 @@
 /*   By: lrio <rio@student.42lyon.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 09:20:19 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/01 23:10:55 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:46:50 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ char	*ft_strfjoin(char *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 	char	*str;
-	size_t	totallen;
+	size_t	total_len;
 
 	if (!s1)
 		return (free(s1), NULL);
-	totallen = (ft_strclen(s1, '\0') + ft_strclen(s2, '\n'));
-	str = malloc((totallen + 1) * sizeof(char));
+	total_len = (ft_strclen(s1, '\0') + ft_strclen(s2, '\n'));
+	str = malloc((total_len + 1) * sizeof(char));
 	if (!str)
 		return (free(s1), NULL);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 17:15:32 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:30:06 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 #include "libft.h"
 #include "mouse.h"
 #include "mlx_init.h"
+#include "threads.h"
+
 #define FR_LST \
 "./fractol <julia/mandelbrot/burning_ship> \nor fractal.save if file exist"
-#include "threads.h"
 
 int	render_img(t_engine *vars)
 {

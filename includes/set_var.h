@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:09:16 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/02 16:04:45 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:41:28 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 
 void	set_vinfo_double(t_engine *vars, double num, int i);
 void	set_vinfo_int(t_engine *vars, int num, int i);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 04:53:33 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 17:12:30 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 18:27:36 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	plus(t_engine *vars)
 
 void	space(t_engine *vars)
 {
-	if (vars->fractal.methode_type == 0)
-		vars->fractal.methode_type = 1;
+	if (vars->fractal.methode_type == DEFAULT)
+		vars->fractal.methode_type = FAST;
 	else
-		vars->fractal.methode_type = 0;
+		vars->fractal.methode_type = DEFAULT;
 	vars->fractal.needredraw = 2;
 }
