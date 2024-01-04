@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 04:53:33 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/19 16:49:53 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/03 17:15:00 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 
 void	minus(t_vars *vars)
 {
-	if (vars->info.max_iter * 2 < INT_MIN)
-		ft_putstr_fd("error to much iteration", 1);
-	else
-		vars->info.max_iter *= 2;
+	vars->info.max_iter *= 2;
+	if (vars->info.max_iter > 1600)
+		vars->info.max_iter = 1600;
 	vars->info.needredraw = 1;
 }
 

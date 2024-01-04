@@ -6,7 +6,7 @@
 /*   By: lrio <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:37:52 by lrio              #+#    #+#             */
-/*   Updated: 2023/11/10 16:37:54 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:49:43 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_isspace(const char *str)
 	return (i);
 }
 
-static long	ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
 	int		start;
 	long	i;

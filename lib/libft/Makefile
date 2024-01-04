@@ -36,7 +36,6 @@ SRC = ./ft_isalpha.c \
 	  ./ft_striteri.c \
 	  ./ft_putchar_fd.c \
 	  ./ft_putstr_fd.c \
-	  ./ft_putendl_fd.c \
 	  ./ft_putnbr_fd.c \
 	  ./ft_lstnew.c \
 	  ./ft_lstadd_front.c \
@@ -46,7 +45,8 @@ SRC = ./ft_isalpha.c \
 	  ./ft_lstdelone.c \
 	  ./ft_lstclear.c \
 	  ./ft_lstiter.c \
-	  ./ft_lstmap.c
+	  ./ft_lstmap.c \
+	  ./ft_putfloat_fd.c
 
 OBJ_DIR = build
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:19:04 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/01 03:16:40 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 09:42:38 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@ typedef struct s_key
 # define ONE 49
 # define TWO 50
 # define THREE 51
+# define FOUR 52
+# define NP_ONE 65436
 
+void	save(t_vars *vars);
+void	keyfour(t_vars *vars);
 void	keythree(t_vars *vars);
 void	keytwo(t_vars *vars);
 void	keyone(t_vars *vars);

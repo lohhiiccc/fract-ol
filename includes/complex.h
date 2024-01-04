@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:58 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 18:24:09 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/01 17:36:37 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ typedef struct s_com_coord
 	t_complex	max;
 }				t_com_coord;
 
-t_complex	add_f2complex(t_complex c, double n);
-t_complex	multiply_complex(t_complex c, int num);
 t_complex	abs_complex(t_complex c);
 double		squared_norm(t_complex c);
 t_complex	square_complex(t_complex c);

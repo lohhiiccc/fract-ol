@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:46 by lrio              #+#    #+#             */
-/*   Updated: 2023/12/31 18:24:19 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/03 16:52:28 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ int		ft_lstsize(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(void *content);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putchar_fd(char c, int fd);
+int		ft_putnbr_fd(long n, int fd);
+int		ft_putstr_fd(char *s, int fd);
+int		ft_putchar_fd(char c, int fd);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_memcmp(const void *p1, const void *p2, size_t n);
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -50,6 +50,7 @@ int		ft_isprint(int c);
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void	*dest, int c, size_t n);
 void	*ft_bzero(void	*dest, size_t n);
+int		ft_putfloat_fd(double num, int fd);
 void	*ft_memcpy(void	*dest, const void *src, size_t n);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t n);
@@ -64,6 +65,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char	*ft_itoa(int n);
+char	*ft_itoa(long n);
 
 #endif

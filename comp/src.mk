@@ -12,4 +12,10 @@ SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/plus_minus.c \
 	   $(SRCDIR)/edit_z.c \
 	   $(SRCDIR)/num.c \
-	   $(SRCDIR)/colorset.c
+	   $(SRCDIR)/colorset.c \
+	   $(SRCDIR)/get_next_line.c \
+	   $(SRCDIR)/get_next_line_utils.c \
+	   $(SRCDIR)/parsing_file.c \
+	   $(SRCDIR)/mlx_utils.c \
+	   $(SRCDIR)/set_var.c \
+	   $(SRCDIR)/save_fractal.c

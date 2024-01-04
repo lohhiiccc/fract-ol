@@ -6,7 +6,7 @@
 /*   By: lrio <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:13:17 by lrio              #+#    #+#             */
-/*   Updated: 2023/11/10 18:25:11 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 09:46:58 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_rev_tab(char *tab, size_t size)
 	}
 }
 
-static int	ft_get_len(long n)
+static int	ft_get_len(long long n)
 {
 	size_t	count;
 
@@ -42,7 +42,7 @@ static int	ft_get_len(long n)
 	return (count);
 }
 
-static void	ft_make_str(char *str, long num)
+static void	ft_make_str(char *str, long long num)
 {
 	size_t	j;
 	int		is_negative;
@@ -68,13 +68,13 @@ static void	ft_make_str(char *str, long num)
 		ft_rev_tab(str, ft_strlen(str));
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
-	long	num;
-	char	*str;
-	size_t	i;
+	long long	num;
+	char		*str;
+	size_t		i;
 
-	num = (long)n;
+	num = (long long)n;
 	i = ft_get_len(num);
 	if (num <= 0)
 		i++;

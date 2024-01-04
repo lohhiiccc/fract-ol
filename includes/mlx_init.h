@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   mlx_init.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrio <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 17:13:17 by lrio              #+#    #+#             */
-/*   Updated: 2023/11/10 18:25:11 by lrio             ###   ########.fr       */
+/*   Created: 2024/01/02 14:52:59 by lrio              #+#    #+#             */
+/*   Updated: 2024/01/02 16:05:08 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef MLX_INIT_H
+# define MLX_INIT_H
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
-}
+void	destroy_mlx(t_vars *vars);
+int		render_img(t_vars *vars);
+void	loop(t_vars *vars);
+int		initvar(t_vars *vars);
+int		close_window(t_vars *vars);
+
+#endif

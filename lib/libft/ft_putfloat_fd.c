@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colorset.h                                         :+:      :+:    :+:   */
+/*   ft_putfloat_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/31 17:43:42 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 10:36:27 by lrio             ###   ########.fr       */
+/*   Created: 2024/01/03 16:50:36 by lrio              #+#    #+#             */
+/*   Updated: 2024/01/03 16:53:03 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLORSET_H
-# define COLORSET_H
+#include "libft.h"
 
-typedef int	(*t_colorset)(t_pixel pixel);
-int	colorset_two(t_pixel pixel);
-int	colorset_one(t_pixel pixel);
-int	colorset_three(t_pixel pixel);
-int	colorset_four(t_pixel pixel);
-#endif
+int	ft_putfloat_fd(double num, int fd)
+{
+	int	i;
+
+	if (num < 0)
+	{
+		num = -num;
+		if (-1 == ft_putchar_fd('-', fd))
+			return (-1);
+	}
+	if (-1 == ft_putnbr_fd((int)num, fd) || -1 == ft_putchar_fd('.', fd))
+		return (-1);
+	i = 0;
+	while (i < 15)
+	{
+		num -= (int)num;
+		num *= 10;
+		if (-1 == ft_putnbr_fd((int)num, fd))
+			return (-1);
+		i++;
+	}
+	return (0);
+}

@@ -6,10 +6,11 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/01 03:14:59 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 09:55:25 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "fractol.h"
 #include "colorset.h"
 
@@ -28,14 +29,14 @@ static int	make_pixel(t_vars *vars, t_complex z, t_complex c, t_pixel pixel)
 {
 	int					i;
 	const t_colorset	color_tab[] = \
-		{&colorset_one, &colorset_two, &colorset_three};
+		{&colorset_one, &colorset_two, &colorset_three, &colorset_four};
 
 	i = 0;
 	pixel.iterations = vars->info.fractal_func(z, c, vars->info.max_iter);
 	if (pixel.iterations > vars->info.max_iter - 1 \
 		&& vars->info.settings.d_color == 1)
 		return (0);
-	while (i != vars->info.settings.colorset && i <= 3)
+	while (i != vars->info.settings.colorset && i <= 4)
 		i++;
 	return (color_tab[i - 1](pixel));
 }
@@ -65,7 +66,7 @@ void	fast_draw(t_vars *vars)
 		{
 			if (!(pixel.x % 2 == 1 || pixel.y % 2 == 1))
 				*(uint32_t *)img_ptr = make_pixel(vars, vars->info.z, \
-						getcomplex(pixel, calc_coord(vars->info)), pixel);
+					getcomplex(pixel, calc_coord(vars->info)), pixel);
 			else
 				*(uint32_t *)img_ptr = 1;
 			img_ptr = (uint8_t *)img_ptr + (vars->data.bits_per_pixel / 8);
