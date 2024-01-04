@@ -6,13 +6,14 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 13:09:26 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:01:59 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+#include <pthread.h>
 # include <stdint.h>
 # include "complex.h"
 
@@ -70,8 +71,6 @@ typedef struct s_img
 	int			endian;
 }				t_img;
 
-#include "threads.h"
-
 typedef struct s_engine
 {
 	void			*mlx;
@@ -83,6 +82,9 @@ typedef struct s_engine
 	t_fractal		fractal;
 }				t_engine;
 
+t_complex		getcomplex(t_pixel pixel, t_fractal info);
+t_fractal		calc_coord(t_fractal init_v);
+int				make_pixel(t_engine *vars, t_complex z, t_complex c, t_pixel pixel);
 int				parsing(const char *path, t_engine *vars, void *func);
 t_fractal_func	get_func(const char *name);
 int				julia(t_complex z, t_complex c, int max_iterations);

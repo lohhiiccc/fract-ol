@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:26:03 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 13:34:50 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:03:12 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,9 @@
 	# define NB_THREADS 1
 # endif
 # include <pthread.h>
-int inti_thread(void *(*start_routine) (void *), void *args);
+# include "fractol.h"
+
+void		flush_buffer(t_pixel *pixel, t_engine *vars, uint32_t *buffer_line);
+t_pixel		fill_buffer(t_pixel *pixel, t_engine *vars, uint32_t *buffer_line, uint32_t i);
+int			inti_thread(void *(*start_routine) (void *), void *args);
 #endif

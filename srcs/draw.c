@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 14:29:04 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:53:17 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <pthread.h>
 #include "threads.h"
 
-static t_fractal	calc_coord(t_fractal init_v)
+t_fractal	calc_coord(t_fractal init_v)
 {
 	t_fractal	info;
 
@@ -27,7 +27,7 @@ static t_fractal	calc_coord(t_fractal init_v)
 	return (info);
 }
 
-static int	make_pixel(t_engine *vars, t_complex z, t_complex c, t_pixel pixel)
+int	make_pixel(t_engine *vars, t_complex z, t_complex c, t_pixel pixel)
 {
 	int					i;
 	const t_colorset	color_tab[] = \
@@ -81,37 +81,11 @@ void	fast_draw(t_engine *vars)
 	vars->fractal.needredraw = 0;
 }
 
-int	inti_thread(void *(*start_routine) (void *), void *args)
-{
-	pthread_t	threads[NB_THREADS];
-	int			i;
-	t_engine	*engine;
 
-	engine = (t_engine *)args;
-	i = 0;
-	engine->line_counter = 0;
-	while (i != NB_THREADS)
-	{
-		if(-1 == pthread_create(threads + i, NULL, start_routine, args)) {
-			// TODO : * CLOSE LES THREADS PRECEDENT
-			return -(1);
-		}
-		i++;
-	}
-	i = 0;
-	while (i != NB_THREADS)
-	{
-		pthread_join(threads[i], NULL);
-		i++;
-	}
-	engine->fractal.needredraw = 0;
-	return (1);
-}
 
 void	*draw_fractal(void *engine)
 {
 	t_pixel		pixel;
-	void		*img_ptr;
 	t_engine	*vars = engine;
 	uint32_t 	buffer_line[W_W];
 	uint32_t	i;
@@ -126,21 +100,8 @@ void	*draw_fractal(void *engine)
 		pthread_mutex_lock(&vars->mutex_line_counter);
 		vars->line_counter++;
 		pthread_mutex_unlock(&vars->mutex_line_counter);
-		while (pixel.x < W_W)
-		{
-			buffer_line[i] = make_pixel(vars, vars->fractal.z, \
-						getcomplex(pixel, calc_coord(vars->fractal)), pixel);
-			i++;
-			pixel.x++;
-		}
-		pthread_mutex_lock(&vars->mutex_img);
-		img_ptr = vars->img.addr + W_W * pixel.y * (vars->img.bits_per_pixel / 8);
-		for (int y = 0; y < W_W - 1; y++) {
-			*(uint32_t *)img_ptr = buffer_line[y];
-			img_ptr = (uint8_t *)img_ptr + (vars->img.bits_per_pixel / 8);
-		}
-		pthread_mutex_unlock(&vars->mutex_img);
-
+		pixel = fill_buffer(&pixel, vars, buffer_line, i);
+		flush_buffer(&pixel, vars, buffer_line);
 		pthread_mutex_lock(&vars->mutex_line_counter);
 		pixel.y = vars->line_counter;
 		pthread_mutex_unlock(&vars->mutex_line_counter);
