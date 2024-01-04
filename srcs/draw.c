@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/02 14:47:15 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 09:55:25 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static int	make_pixel(t_vars *vars, t_complex z, t_complex c, t_pixel pixel)
 {
 	int					i;
 	const t_colorset	color_tab[] = \
-		{&colorset_one, &colorset_two, &colorset_three};
+		{&colorset_one, &colorset_two, &colorset_three, &colorset_four};
 
 	i = 0;
 	pixel.iterations = vars->info.fractal_func(z, c, vars->info.max_iter);
 	if (pixel.iterations > vars->info.max_iter - 1 \
 		&& vars->info.settings.d_color == 1)
 		return (0);
-	while (i != vars->info.settings.colorset && i <= 3)
+	while (i != vars->info.settings.colorset && i <= 4)
 		i++;
 	return (color_tab[i - 1](pixel));
 }
@@ -98,6 +98,5 @@ void	draw_fractal(t_vars *vars)
 		}
 		pixel.y++;
 	}
-	printf("x: %20.18f\n", vars->info.zoom_factor);
 	vars->info.needredraw = 0;
 }

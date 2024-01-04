@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/02 18:02:43 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 10:36:44 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_pixel
 typedef struct s_settings
 {
 	int			colorset;
-	int 		d_color;
+	int			d_color;
 }				t_settings;
 
 typedef int	(*t_fractal_func)(t_complex z, t_complex c, int);

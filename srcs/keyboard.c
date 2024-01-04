@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:29:33 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/02 17:12:59 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 09:42:51 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_key_func	get_key_func(int keycode)
 							{CR_2, &addzr}, {CR_1, &rmzr}, \
 							{PLUS_DIGIT, &addzi}, {MINUS_DIGIT, &rmzi}, \
 							{ONE, &keyone}, {TWO, &keytwo}, {THREE, &keythree}, \
-							{NP_ONE, &save}, {-1, NULL}};
+							{FOUR, &keyfour}, {NP_ONE, &save}, {-1, NULL}};
 
 	i = 0;
 	while (key[i].key_id != -1)

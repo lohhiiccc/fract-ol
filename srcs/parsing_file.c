@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 13:54:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/02 16:01:30 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 09:54:06 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	set_vinfo(t_vars *vars, int i, const char **f_format, char *line)
 int	set_parsing_var(t_vars *vars, int fd, void *func)
 {
 	const char	*f_format[] = {"fr:", "x:", "y:", "zoom:", \
-		"iter:", "z.r:", "z.i:", "color_set:", "d_color:", NULL};
+		"iter:", "c.r:", "c.i:", "color_set:", "d_color:", NULL};
 	char		*line;
 	int			i;
 

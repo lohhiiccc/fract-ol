@@ -45,7 +45,8 @@ SRC = ./ft_isalpha.c \
 	  ./ft_lstdelone.c \
 	  ./ft_lstclear.c \
 	  ./ft_lstiter.c \
-	  ./ft_lstmap.c
+	  ./ft_lstmap.c \
+	  ./ft_putfloat_fd.c
 
 OBJ_DIR = build
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
