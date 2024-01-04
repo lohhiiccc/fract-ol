@@ -14,27 +14,27 @@
 #include "keyboard.h"
 #include <limits.h>
 
-void	minus(t_vars *vars)
+void	minus(t_engine *vars)
 {
-	vars->info.max_iter *= 2;
-	if (vars->info.max_iter > 1600)
-		vars->info.max_iter = 1600;
-	vars->info.needredraw = 1;
+	vars->fractal.max_iter *= 2;
+	if (vars->fractal.max_iter > 1600)
+		vars->fractal.max_iter = 1600;
+	vars->fractal.needredraw = 1;
 }
 
-void	plus(t_vars *vars)
+void	plus(t_engine *vars)
 {
-	vars->info.max_iter /= 2;
-	if (vars->info.max_iter < 50)
-		vars->info.max_iter = 50;
-	vars->info.needredraw = 1;
+	vars->fractal.max_iter /= 2;
+	if (vars->fractal.max_iter < 50)
+		vars->fractal.max_iter = 50;
+	vars->fractal.needredraw = 1;
 }
 
-void	space(t_vars *vars)
+void	space(t_engine *vars)
 {
-	if (vars->info.methode_type == 0)
-		vars->info.methode_type = 1;
+	if (vars->fractal.methode_type == 0)
+		vars->fractal.methode_type = 1;
 	else
-		vars->info.methode_type = 0;
-	vars->info.needredraw = 2;
+		vars->fractal.methode_type = 0;
+	vars->fractal.needredraw = 2;
 }

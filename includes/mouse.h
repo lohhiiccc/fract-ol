@@ -14,6 +14,6 @@
 # define MOUSE_H
 # include "fractol.h"
 
-int	mouse_hook(int button, int x, int y, t_vars *vars);
+int	mouse_hook(int button, int x, int y, t_engine *vars);
 
 #endif

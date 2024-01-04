@@ -14,38 +14,38 @@
 #include "fractol.h"
 #include "mlx.h"
 
-void	arrow_up(t_vars *vars)
+void	arrow_up(t_engine *vars)
 {
-	if (vars->info.y - 0.8 * (1.6 * vars->info.zoom_factor) < -2)
-		vars->info.y = -2;
+	if (vars->fractal.y - 0.8 * (1.6 * vars->fractal.zoom_factor) < -2)
+		vars->fractal.y = -2;
 	else
-		vars->info.y -= 0.8 * (1.6 * vars->info.zoom_factor);
-	vars->info.needredraw = 1;
+		vars->fractal.y -= 0.8 * (1.6 * vars->fractal.zoom_factor);
+	vars->fractal.needredraw = 1;
 }
 
-void	arrow_down(t_vars *vars)
+void	arrow_down(t_engine *vars)
 {
-	if (vars->info.y + 0.8 * (1.6 * vars->info.zoom_factor) > 2)
-		vars->info.y = 2;
+	if (vars->fractal.y + 0.8 * (1.6 * vars->fractal.zoom_factor) > 2)
+		vars->fractal.y = 2;
 	else
-		vars->info.y += 0.8 * (1.6 * vars->info.zoom_factor);
-	vars->info.needredraw = 1;
+		vars->fractal.y += 0.8 * (1.6 * vars->fractal.zoom_factor);
+	vars->fractal.needredraw = 1;
 }
 
-void	arrow_left(t_vars *vars)
+void	arrow_left(t_engine *vars)
 {
-	if (vars->info.x - 0.8 * (1.6 * vars->info.zoom_factor) < -2)
-		vars->info.x = -2;
+	if (vars->fractal.x - 0.8 * (1.6 * vars->fractal.zoom_factor) < -2)
+		vars->fractal.x = -2;
 	else
-		vars->info.x -= 0.8 * (1.6 * vars->info.zoom_factor);
-	vars->info.needredraw = 1;
+		vars->fractal.x -= 0.8 * (1.6 * vars->fractal.zoom_factor);
+	vars->fractal.needredraw = 1;
 }
 
-void	arrow_right(t_vars *vars)
+void	arrow_right(t_engine *vars)
 {
-	if (vars->info.x + 0.8 * (1.6 * vars->info.zoom_factor) > 2)
-		vars->info.x = 2;
+	if (vars->fractal.x + 0.8 * (1.6 * vars->fractal.zoom_factor) > 2)
+		vars->fractal.x = 2;
 	else
-		vars->info.x += 0.8 * (1.6 * vars->info.zoom_factor);
-	vars->info.needredraw = 1;
+		vars->fractal.x += 0.8 * (1.6 * vars->fractal.zoom_factor);
+	vars->fractal.needredraw = 1;
 }

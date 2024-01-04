@@ -55,7 +55,7 @@ double	ft_strtod(char *str)
 	return (res);
 }
 
-static void	set_vinfo(t_vars *vars, int i, const char **f_format, char *line)
+static void	set_vinfo(t_engine *vars, int i, const char **f_format, char *line)
 {
 	if ((i >= 1 && i <= 3) || (i >= 5 && i <= 6))
 		set_vinfo_double(vars, ft_strtod(line + ft_strlen(f_format[i])), i);
@@ -63,7 +63,7 @@ static void	set_vinfo(t_vars *vars, int i, const char **f_format, char *line)
 		set_vinfo_int(vars, ft_atoi(line + ft_strlen(f_format[i])), i);
 }
 
-int	set_parsing_var(t_vars *vars, int fd, void *func)
+int	set_parsing_var(t_engine *vars, int fd, void *func)
 {
 	const char	*f_format[] = {"fr:", "x:", "y:", "zoom:", \
 		"iter:", "c.r:", "c.i:", "color_set:", "d_color:", NULL};
@@ -84,7 +84,7 @@ int	set_parsing_var(t_vars *vars, int fd, void *func)
 			func = get_func(line + ft_strlen(f_format[0]));
 			if (func == NULL)
 				return (free(line), -1);
-			vars->info.fractal_func = func;
+			vars->fractal.fractal_func = func;
 		}
 		set_vinfo(vars, i - 1, f_format, line);
 		free(line);
@@ -92,7 +92,7 @@ int	set_parsing_var(t_vars *vars, int fd, void *func)
 	return (0);
 }
 
-int	parsing(const char *path, t_vars *vars, void *func)
+int	parsing(const char *path, t_engine *vars, void *func)
 {
 	int			fd;
 
@@ -101,8 +101,8 @@ int	parsing(const char *path, t_vars *vars, void *func)
 		return (-1);
 	if (set_parsing_var(vars, fd, func) == -1)
 		return (-1);
-	if (vars->info.zoom_factor == 0)
-		vars->info.zoom_factor = 1;
+	if (vars->fractal.zoom_factor == 0)
+		vars->fractal.zoom_factor = 1;
 	close(fd);
 	return (0);
 }

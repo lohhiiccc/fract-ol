@@ -14,18 +14,18 @@
 #include "fractol.h"
 #include "keyboard.h"
 
-static void	esc(t_vars *vars)
+static void	esc(t_engine *vars)
 {
 	return ((void)close_window(vars));
 }
 
-static void	del(t_vars *vars)
+static void	del(t_engine *vars)
 {
-	if (vars->info.settings.d_color == 1)
-		vars->info.settings.d_color = 0;
+	if (vars->fractal.settings.d_color == 1)
+		vars->fractal.settings.d_color = 0;
 	else
-		vars->info.settings.d_color = 1;
-	vars->info.needredraw = 1;
+		vars->fractal.settings.d_color = 1;
+	vars->fractal.needredraw = 1;
 }
 
 static t_key_func	get_key_func(int keycode)
@@ -50,7 +50,7 @@ static t_key_func	get_key_func(int keycode)
 	return (NULL);
 }
 
-int	keyboard(int key, t_vars *vars)
+int	keyboard(int key, t_engine *vars)
 {
 	t_key_func	key_f;
 

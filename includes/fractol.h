@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 10:36:44 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 13:09:26 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_aliasfunc
 	t_fractal_func	fractal_func;
 }					t_aliasfunc;
 
-typedef struct s_info
+typedef struct s_fractal
 {
 	t_fractal_func		fractal_func;
 	int					methode_type;
@@ -59,33 +59,38 @@ typedef struct s_info
 	t_com_coord			comp;
 	t_settings			settings;
 	short				needredraw;
-}						t_info;
+}						t_fractal;
 
-typedef struct s_data
+typedef struct s_img
 {
 	void		*img;
 	char		*addr;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
-}				t_data;
+}				t_img;
 
-typedef struct s_vars
+#include "threads.h"
+
+typedef struct s_engine
 {
-	void		*mlx;
-	void		*win;
-	t_data		data;
-	t_info		info;
-}				t_vars;
+	void			*mlx;
+	void			*win;
+	unsigned int 	line_counter;
+	pthread_mutex_t mutex_line_counter;
+	pthread_mutex_t mutex_img;
+	t_img			img;
+	t_fractal		fractal;
+}				t_engine;
 
-int				parsing(const char *path, t_vars *vars, void *func);
+int				parsing(const char *path, t_engine *vars, void *func);
 t_fractal_func	get_func(const char *name);
 int				julia(t_complex z, t_complex c, int max_iterations);
-int				close_window(t_vars *vars);
+int				close_window(t_engine *vars);
 void			even_pixel(uint32_t *img_ptr);
 void			odd_pixel(uint32_t *img_ptr);
-void			fast_draw(t_vars *vars);
-void			draw_fractal(t_vars *vars);
+void			fast_draw(t_engine *vars);
+void			*draw_fractal(void *vars);
 int				mandelbrot(t_complex z, t_complex c, int max_iterations);
 int				burning_ship(t_complex z, t_complex c, int max_iterations);
 #endif

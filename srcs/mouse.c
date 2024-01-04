@@ -24,33 +24,33 @@ double	capnum(int cap, double num)
 	return (num);
 }
 
-static void	scroll_up(t_vars *vars, int x, int y)
+static void	scroll_up(t_engine *vars, int x, int y)
 {
-	vars->info.zoom_factor *= 0.5;
-	vars->info.x = capnum(2, (vars->info.x + \
-		(((x - W_W * 0.5) / (0.2000 * W_W)) * vars->info.zoom_factor)));
-	vars->info.y = capnum(2, (vars->info.y + \
-		(((y - W_H * 0.5) / (0.3375 * W_H)) * vars->info.zoom_factor)));
-	vars->info.zoom_factor *= 1.5;
-	vars->info.needredraw = 1;
+	vars->fractal.zoom_factor *= 0.5;
+	vars->fractal.x = capnum(2, (vars->fractal.x + \
+		(((x - W_W * 0.5) / (0.2000 * W_W)) * vars->fractal.zoom_factor)));
+	vars->fractal.y = capnum(2, (vars->fractal.y + \
+		(((y - W_H * 0.5) / (0.3375 * W_H)) * vars->fractal.zoom_factor)));
+	vars->fractal.zoom_factor *= 1.5;
+	vars->fractal.needredraw = 1;
 }
 
-static void	scroll_down(t_vars *vars)
+static void	scroll_down(t_engine *vars)
 {
-	vars->info.zoom_factor *= 1.5;
-	vars->info.needredraw = 1;
+	vars->fractal.zoom_factor *= 1.5;
+	vars->fractal.needredraw = 1;
 }
 
-static void	left_click(t_vars *vars, int x, int y)
+static void	left_click(t_engine *vars, int x, int y)
 {
-	vars->info.x = capnum(2, ((vars->info.x + \
-		(((x - W_W * 0.5) / (0.2000 * W_W))) * vars->info.zoom_factor)));
-	vars->info.y = capnum(2, ((vars->info.y + \
-		(((y - W_H * 0.5) / (0.3375 * W_H))) * vars->info.zoom_factor)));
-	vars->info.needredraw = 1;
+	vars->fractal.x = capnum(2, ((vars->fractal.x + \
+		(((x - W_W * 0.5) / (0.2000 * W_W))) * vars->fractal.zoom_factor)));
+	vars->fractal.y = capnum(2, ((vars->fractal.y + \
+		(((y - W_H * 0.5) / (0.3375 * W_H))) * vars->fractal.zoom_factor)));
+	vars->fractal.needredraw = 1;
 }
 
-int	mouse_hook(int button, int x, int y, t_vars *vars)
+int	mouse_hook(int button, int x, int y, t_engine *vars)
 {
 	if (button == MOUSE_S_UP || button == MOUSE_S_DOWN || button == LEFT_CLICK)
 	{

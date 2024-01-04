@@ -29,33 +29,33 @@ const char	*reversfunc(t_fractal_func func)
 	return (funcs[i].fractal_name);
 }
 
-double	*get_var_for_d(int i, t_vars *vars)
+double	*get_var_for_d(int i, t_engine *vars)
 {
 	if (i == 1)
-		return (&(vars->info.x));
+		return (&(vars->fractal.x));
 	if (i == 2)
-		return (&(vars->info.y));
+		return (&(vars->fractal.y));
 	if (i == 3)
-		return (&(vars->info.zoom_factor));
+		return (&(vars->fractal.zoom_factor));
 	if (i == 5)
-		return (&(vars->info.z.real));
-	return (&(vars->info.z.imag));
+		return (&(vars->fractal.z.real));
+	return (&(vars->fractal.z.imag));
 }
 
-int	*get_var_for_int(int i, t_vars *vars)
+int	*get_var_for_int(int i, t_engine *vars)
 {
 	if (i == 4)
-		return (&(vars->info.max_iter));
+		return (&(vars->fractal.max_iter));
 	if (i == 7)
-		return (&(vars->info.settings.colorset));
-	return (&(vars->info.settings.d_color));
+		return (&(vars->fractal.settings.colorset));
+	return (&(vars->fractal.settings.d_color));
 }
 
-static void	putvars_fd(int i, t_vars *vars, int fd)
+static void	putvars_fd(int i, t_engine *vars, int fd)
 {
 	if (i == 0)
 		if (-1 == ft_putstr_fd((char *) \
-				reversfunc(vars->info.fractal_func), fd))
+				reversfunc(vars->fractal.fractal_func), fd))
 			exit(close_window(vars));
 	if (i == 4 || i == 8 || i == 7)
 		ft_putnbr_fd(*get_var_for_int(i, vars), fd);
@@ -64,7 +64,7 @@ static void	putvars_fd(int i, t_vars *vars, int fd)
 			exit(close_window(vars));
 }
 
-void	save(t_vars *vars)
+void	save(t_engine *vars)
 {
 	const char	*f_format[] = {"fr:", "x:", "y:", "zoom:", \
 		"iter:", "c.r:", "c.i:", "color_set:", "d_color:", NULL};

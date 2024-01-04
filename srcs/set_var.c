@@ -12,26 +12,26 @@
 
 #include "set_var.h"
 
-void	set_vinfo_int(t_vars *vars, int num, int i)
+void	set_vinfo_int(t_engine *vars, int num, int i)
 {
 	if (i == 4)
-		vars->info.max_iter = num;
+		vars->fractal.max_iter = num;
 	if (i == 7)
-		vars->info.settings.colorset = num;
+		vars->fractal.settings.colorset = num;
 	if (i == 8)
-		vars->info.settings.d_color = num;
+		vars->fractal.settings.d_color = num;
 }
 
-void	set_vinfo_double(t_vars *vars, double num, int i)
+void	set_vinfo_double(t_engine *vars, double num, int i)
 {
 	if (i == 1)
-		vars->info.x = num;
+		vars->fractal.x = num;
 	else if (i == 2)
-		vars->info.y = num;
+		vars->fractal.y = num;
 	else if (i == 3)
-		vars->info.zoom_factor = num;
+		vars->fractal.zoom_factor = num;
 	else if (i == 5)
-		vars->info.z.real = num;
+		vars->fractal.z.real = num;
 	else if (i == 6)
-		vars->info.z.imag = num;
+		vars->fractal.z.imag = num;
 }

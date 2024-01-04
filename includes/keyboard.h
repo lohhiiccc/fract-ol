@@ -14,7 +14,7 @@
 # define KEYBOARD_H
 # include "fractol.h"
 
-typedef void	(*t_key_func)(t_vars *vars);
+typedef void	(*t_key_func)(t_engine *vars);
 
 typedef struct s_key
 {
@@ -44,21 +44,21 @@ typedef struct s_key
 # define FOUR 52
 # define NP_ONE 65436
 
-void	save(t_vars *vars);
-void	keyfour(t_vars *vars);
-void	keythree(t_vars *vars);
-void	keytwo(t_vars *vars);
-void	keyone(t_vars *vars);
-int		keyboard(int key, t_vars *vars);
-void	arrow_up(t_vars *vars);
-void	arrow_down(t_vars *vars);
-void	arrow_left(t_vars *vars);
-void	arrow_right(t_vars *vars);
-void	minus(t_vars *vars);
-void	plus(t_vars *vars);
-void	space(t_vars *vars);
-void	addzi(t_vars *vars);
-void	rmzi(t_vars *vars);
-void	addzr(t_vars *vars);
-void	rmzr(t_vars *vars);
+void	save(t_engine *vars);
+void	keyfour(t_engine *vars);
+void	keythree(t_engine *vars);
+void	keytwo(t_engine *vars);
+void	keyone(t_engine *vars);
+int		keyboard(int key, t_engine *vars);
+void	arrow_up(t_engine *vars);
+void	arrow_down(t_engine *vars);
+void	arrow_left(t_engine *vars);
+void	arrow_right(t_engine *vars);
+void	minus(t_engine *vars);
+void	plus(t_engine *vars);
+void	space(t_engine *vars);
+void	addzi(t_engine *vars);
+void	rmzi(t_engine *vars);
+void	addzr(t_engine *vars);
+void	rmzr(t_engine *vars);
 #endif

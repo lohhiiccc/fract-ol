@@ -12,34 +12,34 @@
 
 #include "keyboard.h"
 
-void	keythree(t_vars *vars)
+void	keythree(t_engine *vars)
 {
-	if (vars->info.settings.colorset == 3)
+	if (vars->fractal.settings.colorset == 3)
 		return ;
-	vars->info.settings.colorset = 3;
-	vars->info.needredraw = 2;
+	vars->fractal.settings.colorset = 3;
+	vars->fractal.needredraw = 2;
 }
 
-void	keytwo(t_vars *vars)
+void	keytwo(t_engine *vars)
 {
-	if (vars->info.settings.colorset == 2)
+	if (vars->fractal.settings.colorset == 2)
 		return ;
-	vars->info.settings.colorset = 2;
-	vars->info.needredraw = 2;
+	vars->fractal.settings.colorset = 2;
+	vars->fractal.needredraw = 2;
 }
 
-void	keyone(t_vars *vars)
+void	keyone(t_engine *vars)
 {
-	if (vars->info.settings.colorset == 1)
+	if (vars->fractal.settings.colorset == 1)
 		return ;
-	vars->info.settings.colorset = 1;
-	vars->info.needredraw = 2;
+	vars->fractal.settings.colorset = 1;
+	vars->fractal.needredraw = 2;
 }
 
-void	keyfour(t_vars *vars)
+void	keyfour(t_engine *vars)
 {
-	if (vars->info.settings.colorset == 4)
+	if (vars->fractal.settings.colorset == 4)
 		return ;
-	vars->info.settings.colorset = 4;
-	vars->info.needredraw = 2;
+	vars->fractal.settings.colorset = 4;
+	vars->fractal.needredraw = 2;
 }

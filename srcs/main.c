@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 10:33:06 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 13:09:37 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,20 @@
 #include "mlx_init.h"
 #define FR_LST \
 "./fractol <julia/mandelbrot/burning_ship> \nor fractal.save if file exist"
+#include "threads.h"
 
-int	render_img(t_vars *vars)
+
+int	render_img(t_engine *vars)
 {
-	if (vars->info.needredraw == 1 || vars->info.needredraw == 2)
+	if (vars->fractal.needredraw == 1 || vars->fractal.needredraw == 2)
 	{
-		if (vars->info.needredraw == 1)
-			fast_draw(vars);
-		else if (vars->info.needredraw == 2)
-			draw_fractal(vars);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);
+		if (vars->fractal.needredraw == 1)
+			inti_thread(&draw_fractal, vars);
+		else if (vars->fractal.needredraw == 2)
+			inti_thread(&draw_fractal, vars);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 	}
+//			fast_draw(vars);
 	return (0);
 }
 
@@ -47,25 +50,27 @@ t_fractal_func	get_func(const char *name)
 
 int	main(int argc, char **argv)
 {
-	t_vars	vars;
+	t_engine	vars;
 	void	*func;
 	int		tmp;
 
+	pthread_mutex_init(&vars.mutex_line_counter, NULL);
+	pthread_mutex_init(&vars.mutex_img, NULL);
 	tmp = 0;
-	vars.info.z = (t_complex){0, 0};
-	vars.info.comp = (t_com_coord){(t_complex){-2.5, -1.5}, \
+	vars.fractal.z = (t_complex){0, 0};
+	vars.fractal.comp = (t_com_coord){(t_complex){-2.5, -1.5}, \
 	(t_complex){2.5, 1.5}};
 	func = NULL;
 	if (!(argc != 2))
 		func = get_func(argv[1]);
-	vars.info = (t_info){func, 0, 0, 0, 1, 100, vars.info.z, \
-	vars.info.comp, (t_settings){1, 1}, 1};
+	vars.fractal = (t_fractal){func, 0, 0, 0, 1, 100, vars.fractal.z, \
+	vars.fractal.comp, (t_settings){1, 1}, 1};
 	if (func == NULL)
 		tmp = parsing(argv[1], &vars, func);
 	if (argc < 2 || tmp == -1)
 		return (ft_putstr_fd(FR_LST, 2), -1);
 	if (argc <= 2 && func == &julia)
-		vars.info.z = (t_complex){0.285, 0.01};
+		vars.fractal.z = (t_complex){0.285, 0.01};
 	if (-1 == initvar(&vars))
 		return (0);
 	loop(&vars);
