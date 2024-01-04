@@ -6,16 +6,15 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:50:38 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/02 14:56:51 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:16:13 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "fractol.h"
 #include "libft.h"
-#include "mlx_init.h"
 #include "mouse.h"
 #include "keyboard.h"
+#include "mlx_init.h"
 
 int	close_window(t_engine *vars)
 {

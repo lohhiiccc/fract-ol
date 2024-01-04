@@ -6,14 +6,12 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:03:02 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 09:53:48 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 16:38:45 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <stddef.h>
 #include "keyboard.h"
-#include <stdio.h>
 #include "libft.h"
 
 const char	*reversfunc(t_fractal_func func)

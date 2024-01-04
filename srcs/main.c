@@ -6,11 +6,10 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:26 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 13:09:37 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:15:32 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "mlx.h"
 #include "libft.h"
 #include "mouse.h"
@@ -19,18 +18,20 @@
 "./fractol <julia/mandelbrot/burning_ship> \nor fractal.save if file exist"
 #include "threads.h"
 
-
 int	render_img(t_engine *vars)
 {
 	if (vars->fractal.needredraw == 1 || vars->fractal.needredraw == 2)
 	{
 		if (vars->fractal.needredraw == 1)
-			inti_thread(&draw_fractal, vars);
+		{
+			inti_thread(&fast_draw, vars);
+			odd_pixel((uint32_t *)vars->img.addr);
+			even_pixel((uint32_t *)vars->img.addr);
+		}
 		else if (vars->fractal.needredraw == 2)
 			inti_thread(&draw_fractal, vars);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 	}
-//			fast_draw(vars);
 	return (0);
 }
 
@@ -51,8 +52,8 @@ t_fractal_func	get_func(const char *name)
 int	main(int argc, char **argv)
 {
 	t_engine	vars;
-	void	*func;
-	int		tmp;
+	void		*func;
+	int			tmp;
 
 	pthread_mutex_init(&vars.mutex_line_counter, NULL);
 	pthread_mutex_init(&vars.mutex_img, NULL);
@@ -75,5 +76,4 @@ int	main(int argc, char **argv)
 		return (0);
 	loop(&vars);
 	destroy_mlx(&vars);
-	return (0);
 }

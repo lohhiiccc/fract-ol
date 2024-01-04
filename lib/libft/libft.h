@@ -6,7 +6,7 @@
 /*   By: lrio <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:17 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/03 16:53:22 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 16:38:49 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ft_lstsize(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(void *content);
-int		ft_putfoat_fd(double num, int fd);
+int		ft_putfloat_fd(double num, int fd);
 int		ft_putnbr_fd(long n, int fd);
 int		ft_putstr_fd(char *s, int fd);
 int		ft_putchar_fd(char c, int fd);

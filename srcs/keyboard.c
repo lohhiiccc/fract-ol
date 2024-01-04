@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "fractol.h"
 #include "keyboard.h"
 
 static void	esc(t_engine *vars)

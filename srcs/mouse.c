@@ -6,11 +6,10 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:18 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 09:35:52 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:16:19 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "keyboard.h"
 
 double	capnum(int cap, double num)

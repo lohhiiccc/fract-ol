@@ -6,13 +6,11 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:22:42 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/01 01:28:28 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:13:32 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "keyboard.h"
-#include "fractol.h"
-#include "mlx.h"
 
 void	arrow_up(t_engine *vars)
 {

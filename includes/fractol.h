@@ -6,14 +6,14 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:54 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 15:01:59 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:08:14 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include <pthread.h>
+# include <pthread.h>
 # include <stdint.h>
 # include "complex.h"
 
@@ -75,23 +75,24 @@ typedef struct s_engine
 {
 	void			*mlx;
 	void			*win;
-	unsigned int 	line_counter;
-	pthread_mutex_t mutex_line_counter;
-	pthread_mutex_t mutex_img;
+	unsigned int	line_counter;
+	pthread_mutex_t	mutex_line_counter;
+	pthread_mutex_t	mutex_img;
 	t_img			img;
 	t_fractal		fractal;
 }				t_engine;
 
 t_complex		getcomplex(t_pixel pixel, t_fractal info);
 t_fractal		calc_coord(t_fractal init_v);
-int				make_pixel(t_engine *vars, t_complex z, t_complex c, t_pixel pixel);
+int				make_pixel(t_engine *vars, \
+t_complex z, t_complex c, t_pixel pixel);
 int				parsing(const char *path, t_engine *vars, void *func);
 t_fractal_func	get_func(const char *name);
 int				julia(t_complex z, t_complex c, int max_iterations);
 int				close_window(t_engine *vars);
 void			even_pixel(uint32_t *img_ptr);
 void			odd_pixel(uint32_t *img_ptr);
-void			fast_draw(t_engine *vars);
+void			*fast_draw(void *engine);
 void			*draw_fractal(void *vars);
 int				mandelbrot(t_complex z, t_complex c, int max_iterations);
 int				burning_ship(t_complex z, t_complex c, int max_iterations);

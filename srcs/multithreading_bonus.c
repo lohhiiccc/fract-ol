@@ -6,11 +6,10 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:50:47 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 15:37:52 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 16:28:58 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "threads.h"
 #include "fractol.h"
 
 int	close_previous_threads(int i, pthread_t *threads)
@@ -51,35 +50,39 @@ int	inti_thread(void *(*start_routine) (void *), void *args)
 	return (1);
 }
 
-void	flush_buffer(uint32_t line, t_engine *vars, uint32_t *buffer_line)
+void	draw_half_line(uint32_t line, t_engine *vars)
 {
 	void	*img_ptr;
-	t_pixel pixel;
+	t_pixel	pixel;
 
-	(void)buffer_line;
 	pixel.x = 0;
 	pixel.y = line;
 	img_ptr = vars->img.addr + W_W * line * (vars->img.bits_per_pixel >> 3);
 	while (pixel.x < W_W)
 	{
-//		*(uint32_t *)img_ptr = buffer_line[x];
-		*(uint32_t *)img_ptr = make_pixel(vars, vars->fractal.z, \
-					getcomplex(pixel, calc_coord(vars->fractal)), pixel);
-//		*(uint32_t *)img_ptr = 255;
-//		if (pixel.x != W_W)
+		if (pixel.x % 2 == 0 && line % 2 == 0)
+			*(uint32_t *)img_ptr = make_pixel(vars, vars->fractal.z, \
+						getcomplex(pixel, calc_coord(vars->fractal)), pixel);
+		else
+			*(uint32_t *)img_ptr = 1;
 		img_ptr = (uint8_t *)img_ptr + (vars->img.bits_per_pixel >> 3);
 		pixel.x++;
 	}
 }
-/*
-t_pixel	fill_buffer \
-(t_pixel *pixel, t_engine *vars, uint32_t *buffer_line, uint32_t i)
+
+void	draw_line(uint32_t line, t_engine *vars)
 {
-	while ((*pixel).x < W_W)
+	void	*img_ptr;
+	t_pixel	pixel;
+
+	pixel.x = 0;
+	pixel.y = line;
+	img_ptr = vars->img.addr + W_W * line * (vars->img.bits_per_pixel >> 3);
+	while (pixel.x < W_W)
 	{
-		i++;
-		(*pixel).x++;
+		*(uint32_t *)img_ptr = make_pixel(vars, vars->fractal.z, \
+					getcomplex(pixel, calc_coord(vars->fractal)), pixel);
+		img_ptr = (uint8_t *)img_ptr + (vars->img.bits_per_pixel >> 3);
+		pixel.x++;
 	}
-	return (*pixel);
 }
-*/

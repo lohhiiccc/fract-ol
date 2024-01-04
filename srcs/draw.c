@@ -6,14 +6,12 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 15:42:18 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:14:32 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "fractol.h"
 #include "colorset.h"
-#include <pthread.h>
 #include "threads.h"
 
 t_fractal	calc_coord(t_fractal init_v)
@@ -54,41 +52,12 @@ t_complex	getcomplex(t_pixel pixel, t_fractal info)
 	return (c);
 }
 
-void	fast_draw(t_engine *vars)
+void	*fast_draw(void *engine)
 {
 	t_pixel		pixel;
-	void		*img_ptr;
+	t_engine	*vars;
 
-	img_ptr = vars->img.addr;
-	pixel.y = 0;
-	while (pixel.y < W_H)
-	{
-		pixel.x = 0;
-		while (pixel.x < W_W)
-		{
-			if (!(pixel.x % 2 == 1 || pixel.y % 2 == 1))
-				*(uint32_t *)img_ptr = make_pixel(vars, vars->fractal.z, \
-					getcomplex(pixel, calc_coord(vars->fractal)), pixel);
-			else
-				*(uint32_t *)img_ptr = 1;
-			img_ptr = (uint8_t *)img_ptr + (vars->img.bits_per_pixel / 8);
-			pixel.x++;
-		}
-		pixel.y++;
-	}
-	odd_pixel((uint32_t *)vars->img.addr);
-	even_pixel((uint32_t *)vars->img.addr);
-	vars->fractal.needredraw = 0;
-}
-
-
-
-void	*draw_fractal(void *engine)
-{
-	t_pixel		pixel;
-	t_engine	*vars = engine;
-	uint32_t 	buffer_line[W_W];
-
+	vars = (t_engine *)engine;
 	pthread_mutex_lock(&vars->mutex_line_counter);
 	while (vars->line_counter < W_H)
 	{
@@ -96,8 +65,27 @@ void	*draw_fractal(void *engine)
 		pixel.y = vars->line_counter;
 		vars->line_counter++;
 		pthread_mutex_unlock(&vars->mutex_line_counter);
-//		pixel = fill_buffer(&pixel, vars, buffer_line, i);
-		flush_buffer(pixel.y, vars, buffer_line);
+		draw_half_line(pixel.y, vars);
+		pthread_mutex_lock(&vars->mutex_line_counter);
+	}
+	pthread_mutex_unlock(&vars->mutex_line_counter);
+	return (NULL);
+}
+
+void	*draw_fractal(void *engine)
+{
+	t_pixel		pixel;
+	t_engine	*vars;
+
+	vars = (t_engine *)engine;
+	pthread_mutex_lock(&vars->mutex_line_counter);
+	while (vars->line_counter < W_H)
+	{
+		pixel.x = 0;
+		pixel.y = vars->line_counter;
+		vars->line_counter++;
+		pthread_mutex_unlock(&vars->mutex_line_counter);
+		draw_line(pixel.y, vars);
 		pthread_mutex_lock(&vars->mutex_line_counter);
 	}
 	pthread_mutex_unlock(&vars->mutex_line_counter);
