@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:50:47 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 15:07:59 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:37:52 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,33 +51,35 @@ int	inti_thread(void *(*start_routine) (void *), void *args)
 	return (1);
 }
 
-void	flush_buffer(t_pixel *pixel, t_engine *vars, uint32_t *buffer_line)
+void	flush_buffer(uint32_t line, t_engine *vars, uint32_t *buffer_line)
 {
 	void	*img_ptr;
-	int		y;
+	t_pixel pixel;
 
-	y = 0;
-	pthread_mutex_lock(&vars->mutex_img);
-	img_ptr = vars->img.addr + W_W * (*pixel).y * \
-		(vars->img.bits_per_pixel >> 3);
-	while (y < W_W - 1)
+	(void)buffer_line;
+	pixel.x = 0;
+	pixel.y = line;
+	img_ptr = vars->img.addr + W_W * line * (vars->img.bits_per_pixel >> 3);
+	while (pixel.x < W_W)
 	{
-		*(uint32_t *)img_ptr = buffer_line[y];
+//		*(uint32_t *)img_ptr = buffer_line[x];
+		*(uint32_t *)img_ptr = make_pixel(vars, vars->fractal.z, \
+					getcomplex(pixel, calc_coord(vars->fractal)), pixel);
+//		*(uint32_t *)img_ptr = 255;
+//		if (pixel.x != W_W)
 		img_ptr = (uint8_t *)img_ptr + (vars->img.bits_per_pixel >> 3);
-		y++;
+		pixel.x++;
 	}
-	pthread_mutex_unlock(&vars->mutex_img);
 }
-
+/*
 t_pixel	fill_buffer \
 (t_pixel *pixel, t_engine *vars, uint32_t *buffer_line, uint32_t i)
 {
 	while ((*pixel).x < W_W)
 	{
-		buffer_line[i] = make_pixel(vars, vars->fractal.z, \
-					getcomplex((*pixel), calc_coord(vars->fractal)), (*pixel));
 		i++;
 		(*pixel).x++;
 	}
 	return (*pixel);
 }
+*/

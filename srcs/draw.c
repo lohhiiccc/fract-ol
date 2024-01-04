@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 14:53:17 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:42:18 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,23 +88,18 @@ void	*draw_fractal(void *engine)
 	t_pixel		pixel;
 	t_engine	*vars = engine;
 	uint32_t 	buffer_line[W_W];
-	uint32_t	i;
 
 	pthread_mutex_lock(&vars->mutex_line_counter);
-	pixel.y = vars->line_counter;
-	pthread_mutex_unlock(&vars->mutex_line_counter);
-	while (pixel.y < W_H)
+	while (vars->line_counter < W_H)
 	{
-		i = 0;
 		pixel.x = 0;
-		pthread_mutex_lock(&vars->mutex_line_counter);
+		pixel.y = vars->line_counter;
 		vars->line_counter++;
 		pthread_mutex_unlock(&vars->mutex_line_counter);
-		pixel = fill_buffer(&pixel, vars, buffer_line, i);
-		flush_buffer(&pixel, vars, buffer_line);
+//		pixel = fill_buffer(&pixel, vars, buffer_line, i);
+		flush_buffer(pixel.y, vars, buffer_line);
 		pthread_mutex_lock(&vars->mutex_line_counter);
-		pixel.y = vars->line_counter;
-		pthread_mutex_unlock(&vars->mutex_line_counter);
 	}
+	pthread_mutex_unlock(&vars->mutex_line_counter);
 	return (NULL);
 }
