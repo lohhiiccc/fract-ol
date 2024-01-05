@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:03:02 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/05 15:55:11 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/05 16:06:32 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	putvars_fd(int i, t_vars *vars, int fd)
 	if (i == 0)
 	{
 		if (-1 == ft_putstr_fd((char *) \
-            reversfunc(vars->info.fractal_func), fd))
+		reversfunc(vars->info.fractal_func), fd))
 			return (close_fd_and_mlx(fd, vars));
 	}
 	if (i == 4 || i == 8 || i == 7)

@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/05 16:01:36 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/05 16:02:48 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	make_pixel(t_vars *vars, t_complex z, t_complex c, t_pixel pixel)
 	int					i;
 	const t_colorset	color_tab[] = \
 		{&colorset_one, &colorset_two, &colorset_three, &colorset_four};
-	
+
 	if (!(vars->info.settings.colorset >= 1 \
 	&& vars->info.settings.colorset <= 4))
 		vars->info.settings.colorset = 1;

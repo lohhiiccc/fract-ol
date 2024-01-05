@@ -6,10 +6,10 @@ all: $(NAME)
 $(NAME):  $(LIBFT) $(MLXLIB) $(OBJS)
 	$(CC) $(CFLAGS) -pthread $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS)
 
-$(LIBFT):
+$(LIBFT): FORCE
 	make -C $(LIBFTDIR)
 
-$(MLXLIB):
+$(MLXLIB): FORCE
 	make -C $(MLXLIBDIR)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
@@ -28,5 +28,7 @@ fclean: clean
 
 re: fclean
 	$(MAKE) all
+
+FORCE:
 
 .PHONY: all clean fclean re

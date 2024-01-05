@@ -2,12 +2,11 @@ NAME = fractol
 
 all:
 	$(MAKE) -C mandatory
-	cp mandatory/$(NAME) ./
+	@cp mandatory/$(NAME) ./
 
 bonus:
 	make -C bonus all
-	rm -f $(NAME)
-	cp bonus/$(NAME) ./
+	@cp bonus/$(NAME) ./
 
 clean:
 	$(MAKE) -C mandatory clean

@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:50:38 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/05 15:56:07 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/05 16:07:04 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,3 @@ int	close_fd_and_mlx(int fd, t_vars *vars)
 	close(fd);
 	return (close_window(vars));
 }
-
