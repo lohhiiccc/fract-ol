@@ -6,13 +6,14 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:03:02 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 16:38:45 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:51:30 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "keyboard.h"
 #include "libft.h"
+#include "mlx_init.h"
 
 const char	*reversfunc(t_fractal_func func)
 {
@@ -49,20 +50,28 @@ int	*get_var_for_int(int i, t_engine *vars)
 	return (&(vars->fractal.settings.d_color));
 }
 
-static void	putvars_fd(int i, t_engine *vars, int fd)
+static int	putvars_fd(int i, t_engine *vars, int fd)
 {
 	if (i == 0)
+	{
 		if (-1 == ft_putstr_fd((char *) \
-				reversfunc(vars->fractal.fractal_func), fd))
-			exit(close_window(vars));
+            reversfunc(vars->fractal.fractal_func), fd))
+			return (close_fd_and_mlx(fd, vars));
+	}
 	if (i == 4 || i == 8 || i == 7)
-		ft_putnbr_fd(*get_var_for_int(i, vars), fd);
+	{
+		if (-1 == ft_putnbr_fd(*get_var_for_int(i, vars), fd))
+			return (close_fd_and_mlx(fd, vars));
+	}
 	if ((i >= 1 && i <= 3) || i == 5 || i == 6)
+	{
 		if (-1 == ft_putfloat_fd(*get_var_for_d(i, vars), fd))
-			exit(close_window(vars));
+			return (close_fd_and_mlx(fd, vars));
+	}
+	return (1);
 }
 
-void	save(t_engine *vars)
+int	save(t_engine *vars)
 {
 	const char	*f_format[] = {"fr:", "x:", "y:", "zoom:", \
 		"iter:", "c.r:", "c.i:", "color_set:", "d_color:", NULL};
@@ -71,16 +80,17 @@ void	save(t_engine *vars)
 
 	fd = open("./fractal.save", O_WRONLY);
 	if (fd < 0)
-		exit(close_window(vars));
+		return (close_fd_and_mlx(fd, vars));
 	i = 0;
 	while (i <= 8)
 	{
-		if (-1 == ft_putstr_fd((char *) f_format[i], fd))
-			exit(close_window(vars));
+		if (-1 == ft_putstr_fd((char *)f_format[i], fd))
+			return (close_fd_and_mlx(fd, vars));
 		putvars_fd(i, vars, fd);
 		if (-1 == write(fd, "\n", 1))
-			exit(close_window(vars));
+			return (close_fd_and_mlx(fd, vars));
 		i++;
 	}
 	close(fd);
+	return (1);
 }

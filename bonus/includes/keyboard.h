@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:19:04 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/05 10:13:59 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:40:20 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ typedef struct s_key
 	t_key_func		func;
 }				t_key;
 
-void	save(t_engine *vars);
+void	fone(t_engine *vars);
+int		save(t_engine *vars);
 void	keyfour(t_engine *vars);
 void	keythree(t_engine *vars);
 void	keytwo(t_engine *vars);

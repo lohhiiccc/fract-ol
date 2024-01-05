@@ -1,13 +1,13 @@
 include comp/src.mk
 include comp/var.mk
 
-all: $(NAME)
+all: $(LIBFT) $(MLXLIB) $(NAME)
 
-$(NAME):  $(LIBFT) $(MLXLIB) $(OBJS)
+$(NAME): $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft $(MLXFLAGS)
 
 $(LIBFT):
-	make -C $(LIBFTDIR)
+	$(MAKE) -C $(LIBFTDIR)
 
 $(MLXLIB):
 	make -C $(MLXLIBDIR)

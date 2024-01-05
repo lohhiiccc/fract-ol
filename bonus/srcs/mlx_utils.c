@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:50:38 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 17:16:13 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:20:56 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,10 @@ void	loop(t_engine *vars)
 	mlx_hook(vars->win, 17, 0, close_window, vars);
 	mlx_loop_hook(vars->mlx, render_img, vars);
 	mlx_loop(vars->mlx);
+}
+
+int	close_fd_and_mlx(int fd, t_engine *vars)
+{
+	close(fd);
+	return (close_window(vars));
 }
