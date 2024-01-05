@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:49:35 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 17:14:32 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/05 10:13:23 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	make_pixel(t_engine *vars, t_complex z, t_complex c, t_pixel pixel)
 	const t_colorset	color_tab[] = \
 		{&colorset_one, &colorset_two, &colorset_three, &colorset_four};
 
+	if (!(vars->fractal.settings.colorset >= 1 \
+	&& vars->fractal.settings.colorset <= 4))
+		vars->fractal.settings.colorset = 1;
 	i = 0;
 	pixel.iterations = vars->fractal.fractal_func(z, c, vars->fractal.max_iter);
 	if (pixel.iterations > vars->fractal.max_iter - 1 \

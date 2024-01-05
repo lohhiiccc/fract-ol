@@ -6,7 +6,7 @@
 /*   By: lrio <lrio@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 04:53:33 by lrio              #+#    #+#             */
-/*   Updated: 2024/01/04 18:27:36 by lrio             ###   ########.fr       */
+/*   Updated: 2024/01/05 09:50:42 by lrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	minus(t_engine *vars)
 {
 	vars->fractal.max_iter *= 2;
-	if (vars->fractal.max_iter > 5000)
-		vars->fractal.max_iter = 5000;
+	if (vars->fractal.max_iter > 40000)
+		vars->fractal.max_iter = 40000;
 	vars->fractal.needredraw = 1;
 }
 
